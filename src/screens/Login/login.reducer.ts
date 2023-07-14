@@ -25,6 +25,12 @@ export default (state = initialState, action: LoginActions) => {
         ...state,
         loading: false,
       };
+    case LOGIN_ACTION_TYPES.LOGOUT:
+      return {
+        loading: false,
+        isUserAuthenticaed: false,
+        token: '',
+      };
     case LOGIN_ACTION_TYPES.SET_LOADING:
       return {
         ...state,

@@ -4,6 +4,7 @@ export enum LOGIN_ACTION_TYPES {
   LOGIN_REQUEST = 'LOGIN_REQUEST',
   LOGIN_SUCCESS = 'LOGIN_SUCCESS',
   LOGIN_FAILURE = 'LOGIN_FAILURE',
+  LOGOUT = 'LOGOUT',
   SET_LOADING = 'SET_LOADING',
   PERSIST = 'persist/REHYDRATE',
 }
@@ -28,6 +29,10 @@ export interface LoginFailAction {
   type: LOGIN_ACTION_TYPES.LOGIN_FAILURE;
 }
 
+export interface LogoutAction {
+  type: LOGIN_ACTION_TYPES.LOGOUT;
+}
+
 export interface SetLoadingAction {
   type: LOGIN_ACTION_TYPES.SET_LOADING;
   payload: boolean;
@@ -45,5 +50,6 @@ export type LoginActions =
   | LoginRequestAction
   | LoginSuccesAction
   | LoginFailAction
+  | LogoutAction
   | SetLoadingAction
   | PersistAction;
