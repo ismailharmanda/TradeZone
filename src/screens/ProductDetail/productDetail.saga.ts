@@ -2,19 +2,22 @@ import {
   PRODUCT_DETAIL_ACTION_TYPES,
   SetLoadingAction,
   ProductDetailSuccesAction,
+  ProductDetailRequestAction,
 } from './productDetail.action';
 import {ForkEffect, put, call, takeLatest} from 'redux-saga/effects';
 import {GenericActionCreator} from 'utils';
-import {getAllProducts} from 'services';
+import {getSingleProduct} from 'services';
 import {AxiosResponse} from 'axios';
 
-function* ProductDetailRequestSaga() {
+function* ProductDetailRequestSaga(action: ProductDetailRequestAction) {
   try {
-    const productsData: AxiosResponse = yield call(getAllProducts);
+    const productDetailData: AxiosResponse = yield call(() =>
+      getSingleProduct(action.payload),
+    );
     yield put(
       GenericActionCreator<ProductDetailSuccesAction>({
         type: PRODUCT_DETAIL_ACTION_TYPES.PRODUCT_DETAIL_SUCCESS,
-        payload: productsData.data,
+        payload: productDetailData.data,
       }),
     );
   } catch (err) {
@@ -29,7 +32,7 @@ function* ProductDetailRequestSaga() {
   }
 }
 
-export default function* ProductsModuleSaga(): Generator<
+export default function* ProductDetailModuleSaga(): Generator<
   ForkEffect<never>,
   void,
   unknown
