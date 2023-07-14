@@ -1,4 +1,4 @@
-import {IProductInfo} from './products';
+import {Product} from './products';
 
 export enum PRODUCTS_ACTION_TYPES {
   PRODUCTS_REQUEST = 'PRODUCTS_REQUEST',
@@ -9,7 +9,7 @@ export enum PRODUCTS_ACTION_TYPES {
 
 export interface ProductsState {
   loading: boolean;
-  products: [IProductInfo?];
+  products: [Product?];
 }
 
 export interface ProductsRequestAction {
@@ -18,7 +18,7 @@ export interface ProductsRequestAction {
 
 export interface ProductsSuccesAction {
   type: PRODUCTS_ACTION_TYPES.PRODUCTS_SUCCESS;
-  payload: [IProductInfo];
+  payload: [Product];
 }
 
 export interface ProductsFailAction {
