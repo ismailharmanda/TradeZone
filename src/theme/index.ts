@@ -30,18 +30,25 @@ export const theme = {
       transparent: 'rgba(255, 255, 255, 0)',
       black: '#000000',
       white: '#ffffff',
+      dark: '#5A5A5A',
     },
     primary: {
-      regular: '#F27919',
+      regular: 'rgb(255,119,5)',
+      transparent: 'rgba(255,119,5,0.6)',
     },
     secondary: {
-      regular: '#F0EDF6',
+      regular: 'rgb(240,237,246)',
+      transparent: 'rgba(240,237,246,0.6)',
     },
     tertiary: {
-      regular: '#006E5E',
+      regular: 'rgb(0,110,94)',
+      transparent: 'rgba(0,110,94,0.6)',
     },
     success: {
       regular: '#006E5E',
+    },
+    error: {
+      regular: '#FF0000',
     },
   },
   shadow: {
@@ -81,5 +88,9 @@ export const theme = {
     xl: 32,
     screenHorizontalPadding: 16,
     screenVerticalPadding: 24,
+  },
+  height: {
+    button: 48,
+    input: 48,
   },
 };

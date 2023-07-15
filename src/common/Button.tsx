@@ -48,7 +48,7 @@ export const Button = ({
 const styles = StyleSheet.create({
   button: {
     width: '100%',
-    height: 50,
+    height: theme.height.button,
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: theme.radius,
