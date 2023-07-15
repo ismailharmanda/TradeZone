@@ -17,6 +17,7 @@ interface Props {
   ListEmptyComponent: JSX.Element;
   contentContainerStyle?: ViewStyle;
   listStyle?: ViewStyle;
+  activeCategory?: string;
 }
 
 export const ProductsList = ({
@@ -26,8 +27,11 @@ export const ProductsList = ({
   ListEmptyComponent,
   contentContainerStyle,
   listStyle,
+  activeCategory,
 }: Props) => {
   const keyExtractor = useCallback((item: any) => item.id.toString(), []);
+
+  const isCategoryActive = activeCategory === category;
 
   const ItemSeperator = useCallback(
     () => <View style={styles.itemSeperator} />,
@@ -35,13 +39,20 @@ export const ProductsList = ({
   );
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        !!activeCategory && activeCategory !== category && styles.hide,
+      ]}>
       <Text style={styles.text}>{category}</Text>
       <FlatList
         ItemSeparatorComponent={ItemSeperator}
-        horizontal={true}
+        horizontal={!isCategoryActive}
         style={listStyle}
-        contentContainerStyle={contentContainerStyle}
+        contentContainerStyle={[
+          contentContainerStyle,
+          isCategoryActive && styles.activeCategoryContentContainer,
+        ]}
         keyExtractor={keyExtractor}
         data={data}
         renderItem={renderItem}
@@ -53,6 +64,12 @@ export const ProductsList = ({
 
 const styles = StyleSheet.create({
   container: {flexShrink: 1},
+  activeCategoryContentContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: theme.spacing.md,
+    justifyContent: 'space-between',
+  },
   text: {
     fontWeight: 'bold',
     fontSize: theme.text.size.md.fontSize,
@@ -63,5 +80,8 @@ const styles = StyleSheet.create({
   },
   itemSeperator: {
     width: theme.spacing.md,
+  },
+  hide: {
+    display: 'none',
   },
 });
