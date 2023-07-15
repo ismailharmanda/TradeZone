@@ -46,6 +46,8 @@ export const ProductsList = ({
       ]}>
       <Text style={styles.text}>{category}</Text>
       <FlatList
+        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={ItemSeperator}
         horizontal={!isCategoryActive}
         style={listStyle}
