@@ -15,7 +15,7 @@ export const CategoryBadge = ({onPress, activeCategory, item}: Props) => {
         style={[
           styles.container,
           isBadgeActive && {
-            backgroundColor: theme.colors.tertiary.regular,
+            backgroundColor: theme.colors.primary.regular,
           },
         ]}>
         <Text
@@ -28,12 +28,17 @@ export const CategoryBadge = ({onPress, activeCategory, item}: Props) => {
 };
 
 const styles = StyleSheet.create({
-  container: {justifyContent: 'center', borderRadius: theme.radius},
+  container: {
+    justifyContent: 'center',
+    borderRadius: theme.radius,
+    borderWidth: 0.2,
+    borderColor: theme.colors.primary.regular,
+  },
   text: {
     padding: theme.spacing.sm,
     textTransform: 'uppercase',
-    textDecorationLine: 'underline',
-    color: theme.colors.base.dark,
+
+    color: theme.colors.primary.regular,
   },
   textActive: {
     color: theme.colors.base.white,

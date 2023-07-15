@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: theme.text.size.md.fontSize,
     lineHeight: theme.text.size.md.lineHeight,
-    color: theme.colors.tertiary.regular,
+    color: theme.colors.primary.regular,
     textTransform: 'uppercase',
     marginBottom: theme.spacing.md,
   },
