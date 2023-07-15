@@ -11,13 +11,15 @@ import {Product} from 'screens/Products/products';
 import {theme} from 'theme';
 
 interface Props {
-  category: string;
+  category?: string;
   data: Product[];
   renderItem: ListRenderItem<Product>;
   ListEmptyComponent: JSX.Element;
   contentContainerStyle?: ViewStyle;
   listStyle?: ViewStyle;
   activeCategory?: string;
+  containerStyle?: ViewStyle;
+  vertical?: boolean;
 }
 
 export const ProductsList = ({
@@ -28,6 +30,8 @@ export const ProductsList = ({
   contentContainerStyle,
   listStyle,
   activeCategory,
+  containerStyle,
+  vertical = false,
 }: Props) => {
   const keyExtractor = useCallback((item: any) => item.id.toString(), []);
 
@@ -43,17 +47,19 @@ export const ProductsList = ({
       style={[
         styles.container,
         !!activeCategory && activeCategory !== category && styles.hide,
+        containerStyle,
       ]}>
       <Text style={styles.text}>{category}</Text>
       <FlatList
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={ItemSeperator}
-        horizontal={!isCategoryActive}
+        horizontal={!isCategoryActive && !vertical}
         style={listStyle}
         contentContainerStyle={[
           contentContainerStyle,
-          isCategoryActive && styles.activeCategoryContentContainer,
+          (isCategoryActive || vertical) &&
+            styles.activeCategoryContentContainer,
         ]}
         keyExtractor={keyExtractor}
         data={data}
