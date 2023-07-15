@@ -1,13 +1,12 @@
 import {createRef, RefObject} from 'react';
 import {NavigationContainerRef, StackActions} from '@react-navigation/native';
-import {SCREENS} from 'config/screens';
 
-type RootStackParamList = {
-  [SCREENS.LOGIN]: any;
-  [SCREENS.PRODUCTS]: any;
-  [SCREENS.PRODUCT_DETAIL]: {productId: Number};
-  [SCREENS.PROFILE]: any;
-  [SCREENS.CART]: any;
+export type RootStackParamList = {
+  LoginScreen: any;
+  ProductsScreen: any;
+  ProductDetailScreen: {productId: number; title: string};
+  ProfileScreen: any;
+  CartScreen: any;
 };
 
 export const navigationRef: RefObject<
