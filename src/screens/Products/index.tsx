@@ -1,9 +1,13 @@
-import {View, Text} from 'react-native';
+import {ActivityIndicator, StyleSheet} from 'react-native';
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {GlobalState} from 'store/reducers';
 import {ProductsState, PRODUCTS_ACTION_TYPES} from './products.action';
 import {GenericActionCreator} from 'utils';
+import {ScrollableContentContainer} from 'common/ScrollableContainer';
+import {ProductsList} from 'components/ProductList';
+import {theme} from 'theme';
+import {ProductCard} from 'components/ProductCard';
 
 export const ProductsScreen = () => {
   const dispatch = useDispatch();
@@ -21,23 +25,34 @@ export const ProductsScreen = () => {
     );
   }, [dispatch]);
 
+  useEffect(() => {
+    productsState.categories?.forEach(category => {
+      dispatch(
+        GenericActionCreator({
+          type: PRODUCTS_ACTION_TYPES.PRODUCTS_BY_CATEGORY_REQUEST,
+          payload: category,
+        }),
+      );
+    });
+  }, [productsState.categories, dispatch]);
+
+  const renderItem = ({item}: {item: any}) => <ProductCard product={item} />;
+
   return (
-    <View>
-      <Text>Products Screen</Text>
-      {productsState.categories.map(category => (
-        <Text
-          onPress={() => {
-            dispatch(
-              GenericActionCreator({
-                type: PRODUCTS_ACTION_TYPES.PRODUCTS_BY_CATEGORY_REQUEST,
-                payload: category,
-              }),
-            );
-          }}
-          key={category}>
-          {category}
-        </Text>
+    <ScrollableContentContainer contentContainerStyle={styles.contentContainer}>
+      {productsState.categories?.map(category => (
+        <ProductsList
+          key={category}
+          data={productsState.productsByCategories[category]}
+          category={category}
+          renderItem={renderItem}
+          ListEmptyComponent={<ActivityIndicator />}
+        />
       ))}
-    </View>
+    </ScrollableContentContainer>
   );
 };
+
+const styles = StyleSheet.create({
+  contentContainer: {gap: theme.spacing.xxl},
+});
