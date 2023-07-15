@@ -1,12 +1,18 @@
 export interface Product {
-  id: Number;
-  title: String;
-  price: Number;
-  category: String;
-  description: String;
-  image: String;
+  id: number;
+  title: string;
+  price: number;
+  category: string;
+  description: string;
+  image: string;
   rating: {
-    rate: Number;
-    count: Number;
+    rate: number;
+    count: number;
   };
 }
+
+export interface ProductsByCategories {
+  [key: string]: Product[];
+}
+
+export type Categories = string[];

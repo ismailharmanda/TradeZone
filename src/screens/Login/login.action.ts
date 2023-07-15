@@ -12,7 +12,7 @@ export enum LOGIN_ACTION_TYPES {
 export interface LoginState {
   loading: boolean;
   isUserAuthenticaed: boolean;
-  token: String;
+  token: string;
 }
 
 export interface LoginRequestAction {
@@ -22,7 +22,7 @@ export interface LoginRequestAction {
 
 export interface LoginSuccesAction {
   type: LOGIN_ACTION_TYPES.LOGIN_SUCCESS;
-  payload: String;
+  payload: string;
 }
 
 export interface LoginFailAction {

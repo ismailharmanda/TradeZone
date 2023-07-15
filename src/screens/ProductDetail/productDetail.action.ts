@@ -14,7 +14,7 @@ export interface ProductDetailState {
 
 export interface ProductDetailRequestAction {
   type: PRODUCT_DETAIL_ACTION_TYPES.PRODUCT_DETAIL_REQUEST;
-  payload: Number;
+  payload: number;
 }
 
 export interface ProductDetailSuccesAction {
