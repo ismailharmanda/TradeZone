@@ -6,6 +6,10 @@ import {ProductDetailScreen} from 'screens/ProductDetail';
 import {ProfileScreen} from 'screens/Profile';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {CartScreen} from 'screens/Cart';
+import {RootStackParamList} from 'navigation/navigationService';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+
+type ProductDetailScreenProps = NativeStackScreenProps<RootStackParamList, any>;
 
 const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -15,8 +19,20 @@ export const UserNavigator = () => {
     return () => {
       return (
         <Stack.Navigator>
-          <Stack.Screen name="ProductsScreen" component={ProductsScreen} />
-          <Stack.Screen name="ProductDetail" component={ProductDetailScreen} />
+          <Stack.Screen
+            name="ProductsScreen"
+            options={{
+              title: 'Products',
+            }}
+            component={ProductsScreen}
+          />
+          <Stack.Screen
+            options={({route}: ProductDetailScreenProps) => ({
+              title: route?.params?.title.split(' ').slice(0, 2).join(' '),
+            })}
+            name="ProductDetailScreen"
+            component={ProductDetailScreen}
+          />
         </Stack.Navigator>
       );
     };
