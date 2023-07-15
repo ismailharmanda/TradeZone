@@ -4,7 +4,7 @@ import {
   ProductsByCategorySuccesAction,
   ProductsByCategoryRequestAction,
 } from './products.action';
-import {ForkEffect, put, call, takeLatest} from 'redux-saga/effects';
+import {ForkEffect, put, call, takeEvery} from 'redux-saga/effects';
 import {GenericActionCreator} from 'utils';
 import {getProductsByCategory} from 'services';
 import {AxiosResponse} from 'axios';
@@ -42,7 +42,7 @@ export default function* ProductsByCategoryModuleSaga(): Generator<
   void,
   unknown
 > {
-  yield takeLatest(
+  yield takeEvery(
     PRODUCTS_ACTION_TYPES.PRODUCTS_BY_CATEGORY_REQUEST,
     ProductsByCategoryRequestSaga,
   );
