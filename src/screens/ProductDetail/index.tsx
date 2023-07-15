@@ -7,9 +7,16 @@ import {
   PRODUCT_DETAIL_ACTION_TYPES,
 } from './productDetail.action';
 import {GenericActionCreator} from 'utils';
+import {RouteProp} from '@react-navigation/native';
 
-export const ProductDetailScreen = () => {
+interface Props {
+  route: RouteProp<any, any> | undefined;
+}
+
+export const ProductDetailScreen = ({route}: Props) => {
   const dispatch = useDispatch();
+
+  const {productId} = route?.params || {};
 
   const productDetailState = useSelector<GlobalState, ProductDetailState>(
     state => state.PRODUCT_DETAIL,
@@ -17,17 +24,20 @@ export const ProductDetailScreen = () => {
   console.log('productDetailState', productDetailState);
 
   useEffect(() => {
+    if (productId == null || undefined) {
+      return;
+    }
     dispatch(
       GenericActionCreator({
         type: PRODUCT_DETAIL_ACTION_TYPES.PRODUCT_DETAIL_REQUEST,
-        payload: 1,
+        payload: productId,
       }),
     );
-  }, [dispatch]);
+  }, [dispatch, productId]);
 
   return (
     <View>
-      <Text>Product Detail Screen</Text>
+      <Text>{productDetailState.product?.title}</Text>
     </View>
   );
 };

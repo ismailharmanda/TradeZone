@@ -12,8 +12,12 @@ import {CategoriesList} from 'components/CategoriesList';
 import {CategoryBadge} from 'components/CategoryBadge';
 import {TextInput} from 'common/TextInput';
 import {Product} from './products';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from 'navigation/navigationService';
 
-export const ProductsScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList, any>;
+
+export const ProductsScreen = ({navigation}: Props) => {
   const dispatch = useDispatch();
 
   const [activeCategory, setActiveCategory] = useState<string>('');
@@ -72,7 +76,17 @@ export const ProductsScreen = () => {
     });
   }, [productsState.categories, dispatch]);
 
-  const renderItem = ({item}: {item: any}) => <ProductCard product={item} />;
+  const renderItem = ({item}: {item: any}) => (
+    <ProductCard
+      onPress={() => {
+        navigation.navigate('ProductDetailScreen', {
+          productId: item.id,
+          title: item.title,
+        });
+      }}
+      product={item}
+    />
+  );
 
   const renderCategory = ({item}: {item: any}) => (
     <CategoryBadge
