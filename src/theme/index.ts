@@ -88,7 +88,7 @@ export const theme = {
     xl: 32,
     xxl: 48,
     screenHorizontalPadding: 16,
-    screenVerticalPadding: 24,
+    screenVerticalPadding: 16,
   },
   height: {
     button: 48,
