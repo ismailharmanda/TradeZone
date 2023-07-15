@@ -2,11 +2,11 @@ import React from 'react';
 import {Image, StyleSheet, KeyboardAvoidingView, ViewStyle} from 'react-native';
 import {theme} from 'theme';
 
-type Props = {
+interface Props {
   children: React.ReactNode;
   withLogo?: boolean;
   containerStyle?: ViewStyle;
-};
+}
 
 export const Container = ({
   children,
