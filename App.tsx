@@ -4,12 +4,14 @@ import {Provider} from 'react-redux';
 import {store, persistor} from 'store';
 import {PersistGate} from 'redux-persist/integration/react';
 import {Navigation} from 'navigation/navigation';
+import Toast from 'react-native-toast-message';
 
 function App(): JSX.Element {
   return (
     <Provider store={store}>
       <PersistGate loading={<Text>Loading...</Text>} persistor={persistor}>
         <Navigation />
+        <Toast />
       </PersistGate>
     </Provider>
   );
