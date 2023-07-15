@@ -1,5 +1,8 @@
 export default {
   getProducts: (): string => '/products',
-  getProductDetail: (id: Number): string => `/products/${id}`,
+  getCategories: (): string => '/products/categories',
+  getProductsByCategory: (category: string): string =>
+    `/products/category/${category}`,
+  getProductDetail: (id: number): string => `/products/${id}`,
   login: (): string => '/auth/login',
 };
