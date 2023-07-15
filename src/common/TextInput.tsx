@@ -1,10 +1,16 @@
 import React from 'react';
-import {View, StyleSheet, Text, TextInput as Input} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  TextInput as Input,
+  ViewStyle,
+} from 'react-native';
 import {theme} from 'theme';
 import {TextInputProps} from 'react-native';
 
 interface Props {
-  style?: any;
+  containerStyle?: ViewStyle;
   placeholder?: string;
   disabled?: boolean;
   loading?: boolean;
@@ -16,6 +22,7 @@ interface Props {
 }
 
 export const TextInput = ({
+  containerStyle,
   value,
   disabled,
   onChangeText,
@@ -24,7 +31,7 @@ export const TextInput = ({
   placeholder,
   ...props
 }: Props) => (
-  <View style={styles.container}>
+  <View style={[styles.container, containerStyle]}>
     <Input
       autoCapitalize="none"
       keyboardType={
