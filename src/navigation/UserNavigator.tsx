@@ -8,6 +8,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {CartScreen} from 'screens/Cart';
 import {RootStackParamList} from 'navigation/navigationService';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {theme} from 'theme';
 
 type ProductDetailScreenProps = NativeStackScreenProps<RootStackParamList, any>;
 
@@ -18,7 +19,10 @@ export const UserNavigator = () => {
   const ProductsStackScreen = useMemo(() => {
     return () => {
       return (
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerTintColor: theme.colors.primary.regular,
+          }}>
           <Stack.Screen
             name="ProductsScreen"
             options={{
