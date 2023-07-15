@@ -10,17 +10,37 @@ import {theme} from 'theme';
 import {ProductCard} from 'components/ProductCard';
 import {CategoriesList} from 'components/CategoriesList';
 import {CategoryBadge} from 'components/CategoryBadge';
+import {TextInput} from 'common/TextInput';
+import {Product} from './products';
 
 export const ProductsScreen = () => {
   const dispatch = useDispatch();
 
-  const [activeCategory, setActiveCategory] = useState<string>('' as string);
+  const [activeCategory, setActiveCategory] = useState<string>('');
+
+  const [visibleProducts, setVisibleProducts] = useState<{
+    [key: string]: boolean;
+  }>({
+    productsByCategory: true,
+    productsBySearch: false,
+  });
+
+  const toggleVisibleProducts = (key: string) => {
+    setVisibleProducts({
+      productsByCategory: false,
+      productsBySearch: false,
+      [key]: true,
+    });
+  };
+
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
 
   const productsState = useSelector<GlobalState, ProductsState>(
     state => state.PRODUCTS,
   );
 
   const toggleCategory = (category: string) => {
+    toggleVisibleProducts('productsByCategory');
     if (activeCategory === category) {
       setActiveCategory('' as string);
     } else {
@@ -29,6 +49,11 @@ export const ProductsScreen = () => {
   };
 
   useEffect(() => {
+    dispatch(
+      GenericActionCreator({
+        type: PRODUCTS_ACTION_TYPES.PRODUCTS_REQUEST,
+      }),
+    );
     dispatch(
       GenericActionCreator({
         type: PRODUCTS_ACTION_TYPES.PRODUCT_CATEGORIES_REQUEST,
@@ -57,9 +82,26 @@ export const ProductsScreen = () => {
     />
   );
 
+  const onSearch = (text: string) => {
+    setActiveCategory('');
+    if (text === '') {
+      toggleVisibleProducts('productsByCategory');
+    } else {
+      toggleVisibleProducts('productsBySearch');
+    }
+    const productsBySearch = productsState.products.filter(product =>
+      product.title.toLowerCase().includes(text.toLowerCase()),
+    );
+    setFilteredProducts(productsBySearch);
+  };
+
   return (
     <ScrollableContentContainer contentContainerStyle={styles.contentContainer}>
-      <View>
+      <View style={styles.filterContainer}>
+        <TextInput
+          onChangeText={onSearch}
+          placeholder="Search a product or brand"
+        />
         <CategoriesList
           data={productsState.categories}
           renderItem={renderCategory}
@@ -68,6 +110,9 @@ export const ProductsScreen = () => {
       </View>
       {productsState.categories?.map(category => (
         <ProductsList
+          containerStyle={
+            !visibleProducts.productsByCategory ? styles.hide : {}
+          }
           activeCategory={activeCategory}
           key={category}
           data={productsState.productsByCategories[category]}
@@ -76,12 +121,24 @@ export const ProductsScreen = () => {
           ListEmptyComponent={<ActivityIndicator />}
         />
       ))}
+      {filteredProducts.length > 0 && (
+        <ProductsList
+          vertical={true}
+          containerStyle={!visibleProducts.productsBySearch ? styles.hide : {}}
+          activeCategory={activeCategory}
+          data={filteredProducts}
+          renderItem={renderItem}
+          ListEmptyComponent={<ActivityIndicator />}
+        />
+      )}
     </ScrollableContentContainer>
   );
 };
 
 const styles = StyleSheet.create({
   contentContainer: {
-    gap: theme.spacing.lg,
+    gap: theme.spacing.md,
   },
+  hide: {display: 'none'},
+  filterContainer: {width: '100%', gap: theme.spacing.sm},
 });
