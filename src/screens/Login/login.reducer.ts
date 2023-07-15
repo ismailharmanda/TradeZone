@@ -37,7 +37,7 @@ export default (state = initialState, action: LoginActions) => {
         loading: action.payload,
       };
     case LOGIN_ACTION_TYPES.PERSIST:
-      return action.payload.LOGIN;
+      return action.payload?.LOGIN || initialState;
 
     default:
       return {
