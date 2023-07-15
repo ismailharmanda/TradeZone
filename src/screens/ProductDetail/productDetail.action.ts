@@ -9,7 +9,7 @@ export enum PRODUCT_DETAIL_ACTION_TYPES {
 
 export interface ProductDetailState {
   loading: boolean;
-  product: ProductDetail | {};
+  product: ProductDetail | undefined;
 }
 
 export interface ProductDetailRequestAction {

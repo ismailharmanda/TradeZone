@@ -6,7 +6,7 @@ import {
 
 const initialState: ProductDetailState = {
   loading: false,
-  product: {},
+  product: undefined,
 };
 
 export default (state = initialState, action: ProductDetailActions) => {
