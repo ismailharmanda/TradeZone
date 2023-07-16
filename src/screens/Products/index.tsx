@@ -14,6 +14,7 @@ import {TextInput} from 'common/TextInput';
 import {Product} from './products';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from 'navigation/navigationService';
+import {LoadingIndicator} from 'common/LoadingIndicator';
 
 type Props = NativeStackScreenProps<RootStackParamList, any>;
 
@@ -155,6 +156,10 @@ export const ProductsScreen = ({navigation, route}: Props) => {
           ListEmptyComponent={<ActivityIndicator />}
         />
       )}
+      <LoadingIndicator
+        isLoading={productsState.loading}
+        text={'Products are loading... '}
+      />
     </ScrollableContentContainer>
   );
 };
