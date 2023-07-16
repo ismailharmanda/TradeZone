@@ -16,7 +16,12 @@ export interface CartState {
   summary: number;
   totalDiscount: number;
   totalByCategory: {
-    [key: string]: {total: number; summary: number; discountAmount: number};
+    [key: string]: {
+      total: number;
+      summary: number;
+      discountAmount: number;
+      percentage: number;
+    };
   };
   discountedCategories: {
     [key: string]: {minTotal: number; discount: number};

@@ -47,7 +47,12 @@ export default (state = initialState, action: CartActions) => {
       }
 
       const updatedTotalByCategory: {
-        [key: string]: {total: number; summary: number; discountAmount: number};
+        [key: string]: {
+          total: number;
+          summary: number;
+          discountAmount: number;
+          percentage: number;
+        };
       } = {};
 
       updatedItems.forEach(item => {
@@ -76,6 +81,7 @@ export default (state = initialState, action: CartActions) => {
                 ),
               2,
             ),
+            percentage: state.discountedCategories[item.category].discount,
           };
           if (
             updatedTotalByCategory[item.category].total >=
@@ -99,6 +105,7 @@ export default (state = initialState, action: CartActions) => {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
             discountAmount: 0,
+            percentage: state.discountedCategories[item.category].discount,
           };
         }
       });
@@ -145,7 +152,12 @@ export default (state = initialState, action: CartActions) => {
       }
 
       const updatedTotalByCategory1: {
-        [key: string]: {total: number; summary: number; discountAmount: number};
+        [key: string]: {
+          total: number;
+          summary: number;
+          discountAmount: number;
+          percentage: number;
+        };
       } = {};
 
       updatedItems1.forEach(item => {
@@ -174,6 +186,7 @@ export default (state = initialState, action: CartActions) => {
                 ),
               2,
             ),
+            percentage: state.discountedCategories[item.category].discount,
           };
           if (
             updatedTotalByCategory1[item.category].total >=
@@ -197,6 +210,7 @@ export default (state = initialState, action: CartActions) => {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
             discountAmount: 0,
+            percentage: state.discountedCategories[item.category].discount,
           };
         }
       });
@@ -225,7 +239,12 @@ export default (state = initialState, action: CartActions) => {
       );
 
       const updatedTotalByCategory2: {
-        [key: string]: {total: number; summary: number; discountAmount: number};
+        [key: string]: {
+          total: number;
+          summary: number;
+          discountAmount: number;
+          percentage: number;
+        };
       } = {};
 
       updatedItems2.forEach(item => {
@@ -254,6 +273,7 @@ export default (state = initialState, action: CartActions) => {
                 ),
               2,
             ),
+            percentage: state.discountedCategories[item.category].discount,
           };
           if (
             updatedTotalByCategory2[item.category].total >=
@@ -276,6 +296,7 @@ export default (state = initialState, action: CartActions) => {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
             discountAmount: 0,
+            percentage: state.discountedCategories[item.category].discount,
           };
         }
       });
