@@ -1,7 +1,18 @@
 const config = {
   screens: {
     ProductsStack: {
-      path: 'productsstack',
+      screens: {
+        ProductsScreen: {
+          path: 'product/:productId/:title',
+        },
+      },
+    },
+    CartStack: {
+      screens: {
+        CartScreen: {
+          path: 'cart',
+        },
+      },
     },
   },
 };

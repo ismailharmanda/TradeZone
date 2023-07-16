@@ -3,6 +3,7 @@ import {NavigationContainerRef, StackActions} from '@react-navigation/native';
 
 export type RootStackParamList = {
   LoginScreen: any;
+  ProductsStack: any;
   ProductsScreen: any;
   ProductDetailScreen: {productId: number; title: string};
   ProfileScreen: any;
