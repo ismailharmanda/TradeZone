@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartSummary renders correctly 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "rgba(240,237,246,0.6)",
+      "borderColor": "rgba(0,110,94,0.6)",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "gap": 16,
+      "padding": 8,
+      "width": "100%",
+    }
+  }
+>
+  <Text
+    style={
+      {
+        "color": "#5A5A5A",
+        "flexWrap": "wrap",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "lineHeight": 16.8,
+        "width": "100%",
+      }
+    }
+  >
+    Sub Total: 
+    100
+     TL
+  </Text>
+  <View>
+    <Text
+      style={
+        {
+          "color": "rgb(255,119,5)",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "lineHeight": 16.8,
+          "marginBottom": 4,
+        }
+      }
+    >
+      Discounts:
+    </Text>
+    <View>
+      <Text
+        style={
+          {
+            "color": "#5A5A5A",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "lineHeight": 16.8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "rgb(0,110,94)",
+              "textTransform": "capitalize",
+            }
+          }
+        >
+          category1
+        </Text>
+         
+        Category
+         
+        <Text
+          style={
+            {
+              "color": "rgb(255,119,5)",
+            }
+          }
+        >
+          10
+          %
+        </Text>
+         
+        - 
+        10
+         TL
+      </Text>
+    </View>
+    <View>
+      <Text
+        style={
+          {
+            "color": "#5A5A5A",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "lineHeight": 16.8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "rgb(0,110,94)",
+              "textTransform": "capitalize",
+            }
+          }
+        >
+          category2
+        </Text>
+         
+        Category
+         
+        <Text
+          style={
+            {
+              "color": "rgb(255,119,5)",
+            }
+          }
+        >
+          20
+          %
+        </Text>
+         
+        - 
+        20
+         TL
+      </Text>
+    </View>
+    <View>
+      <Text
+        style={
+          {
+            "color": "#5A5A5A",
+            "fontSize": 14,
+            "fontWeight": "bold",
+            "lineHeight": 16.8,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "rgb(0,110,94)",
+              "textTransform": "capitalize",
+            }
+          }
+        >
+          category3
+        </Text>
+         
+        Category
+         
+        <Text
+          style={
+            {
+              "color": "rgb(255,119,5)",
+            }
+          }
+        >
+          30
+          %
+        </Text>
+         
+        - 
+        30
+         TL
+      </Text>
+    </View>
+  </View>
+  <Text
+    style={
+      {
+        "color": "#5A5A5A",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "lineHeight": 21,
+      }
+    }
+  >
+    Summary:
+     
+    <Text
+      style={
+        {
+          "color": "rgb(255,119,5)",
+        }
+      }
+    >
+      80
+       TL
+    </Text>
+  </Text>
+</View>
+`;
