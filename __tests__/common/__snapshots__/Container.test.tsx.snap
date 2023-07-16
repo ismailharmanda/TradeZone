@@ -41,5 +41,16 @@ exports[`Container component renders correctly 1`] = `
     }
     testID="logo"
   />
+  <Text
+    style={
+      {
+        "color": "rgb(255,119,5)",
+        "fontSize": 28,
+        "fontWeight": "bold",
+      }
+    }
+  >
+    TrendZone
+  </Text>
 </View>
 `;

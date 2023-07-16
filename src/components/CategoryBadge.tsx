@@ -10,7 +10,9 @@ interface Props {
 export const CategoryBadge = ({onPress, activeCategory, item}: Props) => {
   const isBadgeActive = activeCategory === item;
   return (
-    <TouchableWithoutFeedback onPress={() => onPress(item)}>
+    <TouchableWithoutFeedback
+      testID="categoryBadge"
+      onPress={() => onPress(item)}>
       <View
         style={[
           styles.container,

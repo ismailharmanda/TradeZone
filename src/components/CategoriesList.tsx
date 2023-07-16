@@ -32,8 +32,9 @@ export const CategoriesList = ({
   );
 
   return (
-    <View style={styles.container}>
+    <View testID="categoriesList" style={styles.container}>
       <FlatList
+        testID="flatList"
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={ItemSeperator}
         horizontal
