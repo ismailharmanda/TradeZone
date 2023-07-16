@@ -6,6 +6,7 @@ const initialState: CartState = {
   items: [],
   totalAmount: 0,
   summary: 0,
+  totalDiscount: 0,
   totalByCategory: {},
   discountedCategories: {
     electronics: {
@@ -46,7 +47,7 @@ export default (state = initialState, action: CartActions) => {
       }
 
       const updatedTotalByCategory: {
-        [key: string]: {total: number; summary: number};
+        [key: string]: {total: number; summary: number; discountAmount: number};
       } = {};
 
       updatedItems.forEach(item => {
@@ -62,6 +63,19 @@ export default (state = initialState, action: CartActions) => {
                 item.price * item.quantity,
               2,
             ),
+            discountAmount: toFixedNumber(
+              toFixedNumber(
+                (updatedTotalByCategory[item.category]?.total || 0) +
+                  item.price * item.quantity,
+                2,
+              ) -
+                toFixedNumber(
+                  (updatedTotalByCategory[item.category]?.summary || 0) +
+                    item.price * item.quantity,
+                  2,
+                ),
+              2,
+            ),
           };
           if (
             updatedTotalByCategory[item.category].total >=
@@ -73,20 +87,33 @@ export default (state = initialState, action: CartActions) => {
                   state.discountedCategories[item.category].discount,
               2,
             );
+            updatedTotalByCategory[item.category].discountAmount =
+              toFixedNumber(
+                updatedTotalByCategory[item.category].total *
+                  state.discountedCategories[item.category].discount,
+                2,
+              );
           }
         } else {
           updatedTotalByCategory[item.category] = {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
+            discountAmount: 0,
           };
         }
       });
+
+      const totalDiscount = Object.values(updatedTotalByCategory).reduce(
+        (acc, curr) => acc + curr.discountAmount,
+        0,
+      );
 
       return {
         ...state,
         items: updatedItems,
         totalAmount: toFixedNumber(updatedTotalAmount, 2),
-        summary: toFixedNumber(updatedTotalAmount, 2),
+        summary: toFixedNumber(updatedTotalAmount - totalDiscount, 2),
+        totalDiscount: toFixedNumber(totalDiscount, 2),
         totalByCategory: updatedTotalByCategory,
       };
     case CART_ACTION_TYPES.CART_BUY:
@@ -95,6 +122,7 @@ export default (state = initialState, action: CartActions) => {
         items: [],
         totalAmount: 0,
         summary: 0,
+        totalDiscount: 0,
       };
     case CART_ACTION_TYPES.CART_DELETE_SINGLE:
       const existingCartItemIndex1 = state.items.findIndex(
@@ -117,7 +145,7 @@ export default (state = initialState, action: CartActions) => {
       }
 
       const updatedTotalByCategory1: {
-        [key: string]: {total: number; summary: number};
+        [key: string]: {total: number; summary: number; discountAmount: number};
       } = {};
 
       updatedItems1.forEach(item => {
@@ -133,6 +161,19 @@ export default (state = initialState, action: CartActions) => {
                 item.price * item.quantity,
               2,
             ),
+            discountAmount: toFixedNumber(
+              toFixedNumber(
+                (updatedTotalByCategory1[item.category]?.total || 0) +
+                  item.price * item.quantity,
+                2,
+              ) -
+                toFixedNumber(
+                  (updatedTotalByCategory1[item.category]?.summary || 0) +
+                    item.price * item.quantity,
+                  2,
+                ),
+              2,
+            ),
           };
           if (
             updatedTotalByCategory1[item.category].total >=
@@ -144,20 +185,32 @@ export default (state = initialState, action: CartActions) => {
                   state.discountedCategories[item.category].discount,
               2,
             );
+            updatedTotalByCategory1[item.category].discountAmount =
+              toFixedNumber(
+                updatedTotalByCategory1[item.category].total *
+                  state.discountedCategories[item.category].discount,
+                2,
+              );
           }
         } else {
           updatedTotalByCategory1[item.category] = {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
+            discountAmount: 0,
           };
         }
       });
+      const totalDiscount1 = Object.values(updatedTotalByCategory1).reduce(
+        (acc, curr) => acc + curr.discountAmount,
+        0,
+      );
       return {
         ...state,
         items: updatedItems1,
         totalAmount: toFixedNumber(updatedTotalAmount1, 2),
-        summary: toFixedNumber(updatedTotalAmount1, 2),
+        summary: toFixedNumber(updatedTotalAmount1 - totalDiscount1, 2),
         totalByCategory: updatedTotalByCategory1,
+        totalDiscount: toFixedNumber(totalDiscount1, 2),
       };
     case CART_ACTION_TYPES.CART_DELETE_ALL:
       const existingCartItemIndex2 = state.items.findIndex(
@@ -172,18 +225,35 @@ export default (state = initialState, action: CartActions) => {
       );
 
       const updatedTotalByCategory2: {
-        [key: string]: {total: number; summary: number};
+        [key: string]: {total: number; summary: number; discountAmount: number};
       } = {};
 
       updatedItems2.forEach(item => {
         if (item.category in state.discountedCategories) {
           updatedTotalByCategory2[item.category] = {
-            total:
+            total: toFixedNumber(
               (updatedTotalByCategory2[item.category]?.total || 0) +
-              item.price * item.quantity,
-            summary:
+                item.price * item.quantity,
+              2,
+            ),
+            summary: toFixedNumber(
               (updatedTotalByCategory2[item.category]?.summary || 0) +
-              item.price * item.quantity,
+                item.price * item.quantity,
+              2,
+            ),
+            discountAmount: toFixedNumber(
+              toFixedNumber(
+                (updatedTotalByCategory2[item.category]?.total || 0) +
+                  item.price * item.quantity,
+                2,
+              ) -
+                toFixedNumber(
+                  (updatedTotalByCategory2[item.category]?.summary || 0) +
+                    item.price * item.quantity,
+                  2,
+                ),
+              2,
+            ),
           };
           if (
             updatedTotalByCategory2[item.category].total >=
@@ -193,20 +263,33 @@ export default (state = initialState, action: CartActions) => {
               updatedTotalByCategory2[item.category].total -
               updatedTotalByCategory2[item.category].total *
                 state.discountedCategories[item.category].discount;
+
+            updatedTotalByCategory2[item.category].discountAmount =
+              toFixedNumber(
+                updatedTotalByCategory2[item.category].total *
+                  state.discountedCategories[item.category].discount,
+                2,
+              );
           }
         } else {
           updatedTotalByCategory2[item.category] = {
-            total: item.price * item.quantity,
-            summary: item.price * item.quantity,
+            total: toFixedNumber(item.price * item.quantity, 2),
+            summary: toFixedNumber(item.price * item.quantity, 2),
+            discountAmount: 0,
           };
         }
       });
+      const totalDiscount2 = Object.values(updatedTotalByCategory2).reduce(
+        (acc, curr) => acc + curr.discountAmount,
+        0,
+      );
       return {
         ...state,
         items: updatedItems2,
         totalAmount: toFixedNumber(updatedTotalAmount2, 2),
-        summary: toFixedNumber(updatedTotalAmount2, 2),
+        summary: toFixedNumber(updatedTotalAmount2 - totalDiscount2, 2),
         totalByCategory: updatedTotalByCategory2,
+        totalDiscount: toFixedNumber(totalDiscount2, 2),
       };
     case CART_ACTION_TYPES.SET_LOADING:
       return {
