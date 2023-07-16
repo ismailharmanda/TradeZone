@@ -9,6 +9,10 @@ import {CartScreen} from 'screens/Cart';
 import {RootStackParamList} from 'navigation/navigationService';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {theme} from 'theme';
+import {CartButton} from 'components/CartButton';
+import {useSelector} from 'react-redux';
+import {GlobalState} from 'store/reducers';
+import {CartState} from 'screens/Cart/cart.action';
 
 type ProductDetailScreenProps = NativeStackScreenProps<RootStackParamList, any>;
 
@@ -16,6 +20,9 @@ const Tab = createMaterialBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export const UserNavigator = () => {
+  const cartState = useSelector<GlobalState, CartState>(state => state.CART);
+  const cartItemsCount = cartState.items.length;
+
   const ProductsStackScreen = useMemo(() => {
     return () => {
       return (
@@ -27,12 +34,14 @@ export const UserNavigator = () => {
             name="ProductsScreen"
             options={{
               title: 'Products',
+              headerRight: CartButton,
             }}
             component={ProductsScreen}
           />
           <Stack.Screen
             options={({route}: ProductDetailScreenProps) => ({
               title: route?.params?.title.split(' ').slice(0, 2).join(' '),
+              headerRight: CartButton,
             })}
             name="ProductDetailScreen"
             component={ProductDetailScreen}
@@ -92,6 +101,7 @@ export const UserNavigator = () => {
       <Tab.Screen
         options={{
           tabBarLabel: 'Cart',
+          tabBarBadge: cartItemsCount,
           tabBarIcon: ({color, focused}) => (
             <MaterialCommunityIcons
               name="cart"
