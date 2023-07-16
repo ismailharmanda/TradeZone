@@ -31,6 +31,7 @@ export interface CartDeleteSingleAction {
 
 export interface CartDeleteAllAction {
   type: CART_ACTION_TYPES.CART_DELETE_ALL;
+  payload: Product;
 }
 
 export interface SetLoadingAction {
