@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScrollableContentContainer renders correctly 1`] = `
+<RCTScrollView
+  contentContainerStyle={
+    [
+      {
+        "alignItems": "flex-start",
+        "flexGrow": 1,
+        "justifyContent": "flex-start",
+        "paddingVertical": 16,
+      },
+      {
+        "paddingHorizontal": 20,
+      },
+    ]
+  }
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+        "gap": 16,
+        "paddingHorizontal": 16,
+        "width": "100%",
+      },
+      {
+        "backgroundColor": "red",
+      },
+    ]
+  }
+  testID="scrollableContentContainer"
+>
+  <View>
+    <View
+      testID="child"
+    />
+  </View>
+</RCTScrollView>
+`;

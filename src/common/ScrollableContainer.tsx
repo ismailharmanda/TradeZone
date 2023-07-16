@@ -15,6 +15,7 @@ export const ScrollableContentContainer = ({
   contentContainerStyle,
 }: Props) => (
   <ScrollView
+    testID="scrollableContentContainer"
     contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
     style={[styles.container, containerStyle]}>
     {children}
