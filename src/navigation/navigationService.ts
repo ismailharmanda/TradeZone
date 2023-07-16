@@ -7,7 +7,14 @@ export type RootStackParamList = {
   ProductDetailScreen: {productId: number; title: string};
   ProfileScreen: any;
   CartScreen: any;
+  CartStack: any;
 };
+
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {}
+  }
+}
 
 export const navigationRef: RefObject<
   NavigationContainerRef<RootStackParamList>
