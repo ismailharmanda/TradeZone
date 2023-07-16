@@ -74,7 +74,7 @@ export const CartScreen = () => {
           product={item}
         />
       ))}
-      {!!cartState.items.length ? (
+      {cartState.items.length ? (
         <CartSummary
           subTotal={cartState.totalAmount}
           summary={cartState.summary}

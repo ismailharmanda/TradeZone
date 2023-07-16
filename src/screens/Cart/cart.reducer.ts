@@ -81,7 +81,8 @@ export default (state = initialState, action: CartActions) => {
                 ),
               2,
             ),
-            percentage: state.discountedCategories[item.category].discount,
+            percentage:
+              state.discountedCategories[item.category]?.discount || 0,
           };
           if (
             updatedTotalByCategory[item.category].total >=
@@ -105,7 +106,8 @@ export default (state = initialState, action: CartActions) => {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
             discountAmount: 0,
-            percentage: state.discountedCategories[item.category].discount,
+            percentage:
+              state.discountedCategories[item.category]?.discount || 0,
           };
         }
       });
@@ -186,7 +188,8 @@ export default (state = initialState, action: CartActions) => {
                 ),
               2,
             ),
-            percentage: state.discountedCategories[item.category].discount,
+            percentage:
+              state.discountedCategories[item.category]?.discount || 0,
           };
           if (
             updatedTotalByCategory1[item.category].total >=
@@ -210,7 +213,8 @@ export default (state = initialState, action: CartActions) => {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
             discountAmount: 0,
-            percentage: state.discountedCategories[item.category].discount,
+            percentage:
+              state.discountedCategories[item.category]?.discount || 0,
           };
         }
       });
@@ -273,7 +277,8 @@ export default (state = initialState, action: CartActions) => {
                 ),
               2,
             ),
-            percentage: state.discountedCategories[item.category].discount,
+            percentage:
+              state.discountedCategories[item.category]?.discount || 0,
           };
           if (
             updatedTotalByCategory2[item.category].total >=
@@ -296,7 +301,8 @@ export default (state = initialState, action: CartActions) => {
             total: toFixedNumber(item.price * item.quantity, 2),
             summary: toFixedNumber(item.price * item.quantity, 2),
             discountAmount: 0,
-            percentage: state.discountedCategories[item.category].discount,
+            percentage:
+              state.discountedCategories[item.category]?.discount || 0,
           };
         }
       });
