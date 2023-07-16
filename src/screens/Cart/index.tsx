@@ -6,6 +6,8 @@ import {GlobalState} from 'store/reducers';
 import {CartState, CART_ACTION_TYPES} from 'screens/Cart/cart.action';
 import {GenericActionCreator} from 'utils';
 import {CartProduct} from './cart';
+import {Button} from 'common/Button';
+import {CartSummary} from 'components/CartSummary';
 
 export const CartScreen = () => {
   const dispatch = useDispatch();
@@ -38,6 +40,16 @@ export const CartScreen = () => {
     );
   };
 
+  console.log('cartState', cartState);
+
+  const onCheckoutPress = () => {
+    dispatch(
+      GenericActionCreator({
+        type: CART_ACTION_TYPES.CART_BUY,
+      }),
+    );
+  };
+
   return (
     <ScrollView
       style={styles.container}
@@ -51,7 +63,23 @@ export const CartScreen = () => {
           product={item}
         />
       ))}
-      <Text>{cartState.totalAmount.toFixed(2)} TL</Text>
+      {!!cartState.items.length ? (
+        <CartSummary
+          subTotal={cartState.totalAmount}
+          summary={cartState.summary}
+          discounts={cartState.totalByCategory}
+        />
+      ) : (
+        <Text style={styles.textNoItems}>
+          No items in cart. Let's add somethings into cart :)
+        </Text>
+      )}
+      <Button
+        disabled={!cartState.items.length}
+        text="Checkout"
+        style={styles.buttonCheckout}
+        onPress={onCheckoutPress}
+      />
     </ScrollView>
   );
 };
@@ -69,5 +97,17 @@ const styles = StyleSheet.create({
     paddingVertical: theme.spacing.screenVerticalPadding,
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
+    gap: theme.spacing.md,
+  },
+  buttonCheckout: {
+    marginTop: 'auto',
+  },
+  textNoItems: {
+    fontSize: theme.text.size.md.fontSize,
+    fontWeight: 'bold',
+    lineHeight: theme.text.size.md.lineHeight,
+    color: theme.colors.base.dark,
+    textAlign: 'center',
+    width: '100%',
   },
 });
