@@ -1,9 +1,10 @@
-import {View, Text} from 'react-native';
 import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {GlobalState} from 'store/reducers';
 import {LOGIN_ACTION_TYPES, LoginState} from 'screens/Login/login.action';
 import {GenericActionCreator} from 'utils';
+import {Button} from 'common/Button';
+import {Container} from 'common/Container';
 
 export const ProfileScreen = () => {
   const dispatch = useDispatch();
@@ -20,9 +21,8 @@ export const ProfileScreen = () => {
   };
 
   return (
-    <View>
-      <Text>Profile Screen</Text>
-      <Text onPress={onPressLogout}>LOGOUT</Text>
-    </View>
+    <Container>
+      <Button text="LOGOUT" onPress={onPressLogout} />
+    </Container>
   );
 };
