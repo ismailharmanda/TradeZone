@@ -45,7 +45,11 @@ export const UserNavigator = () => {
   const ProfileStackScreen = useMemo(() => {
     return () => {
       return (
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerTintColor: theme.colors.primary.regular,
+            title: 'Profile',
+          }}>
           <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         </Stack.Navigator>
       );
@@ -55,7 +59,11 @@ export const UserNavigator = () => {
   const CartStackScreen = useMemo(() => {
     return () => {
       return (
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerTintColor: theme.colors.primary.regular,
+            title: 'Cart',
+          }}>
           <Stack.Screen name="CartScreen" component={CartScreen} />
         </Stack.Navigator>
       );
