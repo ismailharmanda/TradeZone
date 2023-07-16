@@ -9,6 +9,7 @@ import {
 import {theme} from 'theme';
 import {CartProduct} from 'screens/Cart/cart';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {toFixedNumber} from 'utils';
 
 interface Props {
   product: CartProduct;
@@ -40,7 +41,7 @@ export const CartItem = ({
         </Text>
         <Text style={styles.textPrice}>
           {product.price} × {product.quantity} ={' '}
-          {product.price * product.quantity} TL
+          {toFixedNumber(product.price * product.quantity, 2)} TL
         </Text>
       </View>
       <View style={styles.calculatorWrapper}>
