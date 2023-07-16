@@ -13,6 +13,13 @@ export interface CartState {
   loading: boolean;
   items: CartProduct[] | [];
   totalAmount: number;
+  summary: number;
+  totalByCategory: {
+    [key: string]: {total: number; summary: number};
+  };
+  discountedCategories: {
+    [key: string]: {minTotal: number; discount: number};
+  };
 }
 
 export interface CartAddAction {
