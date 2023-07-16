@@ -11,6 +11,7 @@ import {RouteProp} from '@react-navigation/native';
 import {theme} from 'theme';
 import {Button} from 'common/Button';
 import Toast from 'react-native-toast-message';
+import {CART_ACTION_TYPES, CartState} from 'screens/Cart/cart.action';
 
 interface Props {
   route: RouteProp<any, any> | undefined;
@@ -32,10 +33,21 @@ export const ProductDetailScreen = ({route}: Props) => {
 
   const {productId} = route?.params || {};
 
+  const addToCart = () => {
+    dispatch(
+      GenericActionCreator({
+        type: CART_ACTION_TYPES.CART_ADD,
+        payload: productDetailState.product,
+      }),
+    );
+    showToast();
+  };
+
   const productDetailState = useSelector<GlobalState, ProductDetailState>(
     state => state.PRODUCT_DETAIL,
   );
-  console.log('productDetailState', productDetailState);
+  const cartState = useSelector<GlobalState, CartState>(state => state.CART);
+  console.log('productDetailState', cartState);
 
   useEffect(() => {
     if (productId == null || undefined) {
@@ -69,8 +81,11 @@ export const ProductDetailScreen = ({route}: Props) => {
             {productDetailState.product?.price} TL
           </Text>
         </View>
-        <Button style={styles.button} text="Add To Cart" onPress={showToast} />
+        <Button style={styles.button} text="Add To Cart" onPress={addToCart} />
       </View>
+      <Text style={styles.textDescription}>
+        {productDetailState.product?.description}
+      </Text>
     </View>
   );
 };
@@ -96,6 +111,14 @@ const styles = StyleSheet.create({
     width: '100%',
     flexWrap: 'wrap',
   },
+  textDescription: {
+    fontWeight: 'normal',
+    fontSize: theme.text.size.xs.fontSize,
+    lineHeight: theme.text.size.xs.lineHeight,
+    color: theme.colors.base.dark,
+    width: '100%',
+    flexWrap: 'wrap',
+  },
   textPrice: {
     fontWeight: 'bold',
     fontSize: theme.text.size.md.fontSize,
@@ -104,9 +127,14 @@ const styles = StyleSheet.create({
     width: '100%',
     flexWrap: 'wrap',
   },
-  infoWrapper: {flexDirection: 'row', alignItems: 'center'},
+  infoWrapper: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: theme.spacing.md,
+  },
   textWrapper: {
     flex: 1,
+    gap: theme.spacing.sm,
   },
   button: {flex: 1},
 });
