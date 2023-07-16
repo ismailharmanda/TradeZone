@@ -1,5 +1,11 @@
 import React from 'react';
-import {Image, StyleSheet, KeyboardAvoidingView, ViewStyle} from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  KeyboardAvoidingView,
+  ViewStyle,
+  Text,
+} from 'react-native';
 import {theme} from 'theme';
 
 interface Props {
@@ -22,6 +28,7 @@ export const Container = ({
       resizeMode="contain"
       style={[styles.logo, withLogo ? null : styles.hide]}
     />
+    {withLogo && <Text style={styles.brand}>TrendZone</Text>}
     {children}
   </KeyboardAvoidingView>
 );
@@ -35,6 +42,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: theme.colors.base.white,
     gap: theme.spacing.md,
+  },
+  brand: {
+    fontSize: theme.text.size.xl.fontSize,
+    color: theme.colors.primary.regular,
+    fontWeight: 'bold',
   },
   logo: {
     width: '40%',
