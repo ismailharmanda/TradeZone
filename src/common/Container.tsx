@@ -3,7 +3,7 @@ import {Image, StyleSheet, KeyboardAvoidingView, ViewStyle} from 'react-native';
 import {theme} from 'theme';
 
 interface Props {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   withLogo?: boolean;
   containerStyle?: ViewStyle;
 }
@@ -17,6 +17,7 @@ export const Container = ({
     style={[styles.container, containerStyle]}
     behavior="padding">
     <Image
+      testID="logo"
       source={require('../assets/logo.png')}
       resizeMode="contain"
       style={[styles.logo, withLogo ? null : styles.hide]}

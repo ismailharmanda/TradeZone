@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Container component renders correctly 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      [
+        {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "flex": 1,
+          "gap": 16,
+          "justifyContent": "center",
+          "paddingHorizontal": 16,
+          "width": "100%",
+        },
+        undefined,
+      ],
+      {
+        "paddingBottom": 0,
+      },
+    ]
+  }
+>
+  <Image
+    resizeMode="contain"
+    source={
+      {
+        "testUri": "../../../src/assets/logo.png",
+      }
+    }
+    style={
+      [
+        {
+          "height": "20%",
+          "width": "40%",
+        },
+        null,
+      ]
+    }
+    testID="logo"
+  />
+</View>
+`;
