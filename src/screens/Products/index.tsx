@@ -17,9 +17,9 @@ import {RootStackParamList} from 'navigation/navigationService';
 
 type Props = NativeStackScreenProps<RootStackParamList, any>;
 
-export const ProductsScreen = ({navigation}: Props) => {
+export const ProductsScreen = ({navigation, route}: Props) => {
   const dispatch = useDispatch();
-
+  const {productId, title} = route?.params || {};
   const [activeCategory, setActiveCategory] = useState<string>('');
 
   const [visibleProducts, setVisibleProducts] = useState<{
@@ -28,6 +28,16 @@ export const ProductsScreen = ({navigation}: Props) => {
     productsByCategory: true,
     productsBySearch: false,
   });
+
+  useEffect(() => {
+    if (productId && title) {
+      navigation.navigate('ProductDetailScreen', {
+        productId,
+        title,
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [navigation]);
 
   const toggleVisibleProducts = (key: string) => {
     setVisibleProducts({
