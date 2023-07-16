@@ -16,6 +16,7 @@ interface Props {
   onPlusPress: (product: CartProduct) => void;
   onMinusPress: (product: CartProduct) => void;
   onDelete: (product: CartProduct) => void;
+  onPress: (product: CartProduct) => void;
 }
 
 const HEIGHT = Dimensions.get('window').height;
@@ -25,9 +26,14 @@ export const CartItem = ({
   onMinusPress,
   onDelete,
   product,
+  onPress,
 }: Props) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      onPress={() => {
+        onPress(product);
+      }}
+      style={styles.container}>
       <Image
         style={styles.image}
         resizeMode="contain"
@@ -62,7 +68,7 @@ export const CartItem = ({
           />
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

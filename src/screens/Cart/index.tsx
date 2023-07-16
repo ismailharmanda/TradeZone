@@ -9,8 +9,12 @@ import {CartProduct} from './cart';
 import {Button} from 'common/Button';
 import {CartSummary} from 'components/CartSummary';
 import {Toast} from 'react-native-toast-message/lib/src/Toast';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {RootStackParamList} from 'navigation/navigationService';
 
-export const CartScreen = () => {
+type Props = NativeStackScreenProps<RootStackParamList, any>;
+
+export const CartScreen = ({navigation}: Props) => {
   const dispatch = useDispatch();
 
   const cartState = useSelector<GlobalState, CartState>(state => state.CART);
@@ -61,12 +65,20 @@ export const CartScreen = () => {
     showToast();
   };
 
+  const onCartItemPress = (product: CartProduct) => {
+    navigation.navigate('ProductDetailScreen', {
+      productId: product.id,
+      title: product.title,
+    });
+  };
+
   return (
     <ScrollView
       style={styles.container}
       contentContainerStyle={styles.contentContainer}>
       {cartState.items.map(item => (
         <CartItem
+          onPress={onCartItemPress}
           onMinusPress={onMinusPress}
           onPlusPress={onPlusPress}
           onDelete={onDelete}
