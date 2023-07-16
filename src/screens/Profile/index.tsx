@@ -1,4 +1,5 @@
 import React from 'react';
+import {StyleSheet} from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
 import {GlobalState} from 'store/reducers';
 import {LOGIN_ACTION_TYPES, LoginState} from 'screens/Login/login.action';
@@ -21,8 +22,14 @@ export const ProfileScreen = () => {
   };
 
   return (
-    <Container>
+    <Container containerStyle={styles.container}>
       <Button text="LOGOUT" onPress={onPressLogout} />
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    justifyContent: 'space-evenly',
+  },
+});
