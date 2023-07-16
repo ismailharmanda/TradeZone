@@ -67,10 +67,20 @@ export default (state = initialState, action: CartActions) => {
         totalAmount: updatedTotalAmount1,
       };
     case CART_ACTION_TYPES.CART_DELETE_ALL:
+      const existingCartItemIndex2 = state.items.findIndex(
+        item => item.id === action.payload.id,
+      );
+      const existingCartItem2 = state.items[existingCartItemIndex2];
+      const updatedTotalAmount2 =
+        state.totalAmount -
+        existingCartItem2.price * existingCartItem2.quantity;
+      let updatedItems2 = state.items.filter(
+        item => item.id !== action.payload.id,
+      );
       return {
         ...state,
-        items: [],
-        totalAmount: 0,
+        items: updatedItems2,
+        totalAmount: updatedTotalAmount2,
       };
     case CART_ACTION_TYPES.SET_LOADING:
       return {
