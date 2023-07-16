@@ -12,6 +12,7 @@ import {theme} from 'theme';
 import {Button} from 'common/Button';
 import Toast from 'react-native-toast-message';
 import {CART_ACTION_TYPES, CartState} from 'screens/Cart/cart.action';
+import {LoadingIndicator} from 'common/LoadingIndicator';
 
 interface Props {
   route: RouteProp<any, any> | undefined;
@@ -62,7 +63,7 @@ export const ProductDetailScreen = ({route}: Props) => {
   }, [dispatch, productId]);
 
   return productDetailState.loading ? (
-    <Text>Loading...</Text>
+    <LoadingIndicator isLoading={productDetailState.loading} />
   ) : (
     <View style={styles.container}>
       <Image

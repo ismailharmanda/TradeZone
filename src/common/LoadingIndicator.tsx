@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     height: Dimensions.get('window').height,
     width: Dimensions.get('window').width,
-    backgroundColor: 'rgba(0, 0,0, 0.8)',
+    backgroundColor: 'rgba(0, 0,0, 0.1)',
     zIndex: 2,
   },
   activityIndicator: {
