@@ -44,8 +44,9 @@ export const CartSummary = ({subTotal, discounts, summary}: Props) => {
       </View>
       <Text style={styles.textSummary}>
         Summary:{' '}
-        <Text style={styles.textSummaryPrice}>{toFixedNumber(summary, 2)}</Text>{' '}
-        TL
+        <Text style={styles.textSummaryPrice}>
+          {toFixedNumber(summary, 2)} TL
+        </Text>
       </Text>
     </View>
   );

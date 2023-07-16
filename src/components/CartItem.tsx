@@ -39,7 +39,7 @@ export const CartItem = ({
         <Text numberOfLines={3} style={styles.textTitle}>
           {product.title}
         </Text>
-        <Text style={styles.textPrice}>
+        <Text numberOfLines={1} adjustsFontSizeToFit style={styles.textPrice}>
           {product.price} × {product.quantity} ={' '}
           {toFixedNumber(product.price * product.quantity, 2)} TL
         </Text>
@@ -57,7 +57,7 @@ export const CartItem = ({
         <TouchableOpacity onPress={() => onDelete(product)}>
           <MaterialCommunityIcons
             name="trash-can-outline"
-            color={theme.colors.primary.regular}
+            color={theme.colors.base.dark}
             size={26}
           />
         </TouchableOpacity>
@@ -111,9 +111,9 @@ const styles = StyleSheet.create({
 
   textPrice: {
     fontWeight: 'bold',
-    fontSize: theme.text.size.md.fontSize,
-    lineHeight: theme.text.size.md.lineHeight,
-    color: theme.colors.tertiary.regular,
+    fontSize: theme.text.size.sm.fontSize,
+    lineHeight: theme.text.size.sm.lineHeight,
+    color: theme.colors.primary.regular,
     width: '100%',
     flexWrap: 'wrap',
   },
@@ -127,6 +127,9 @@ const styles = StyleSheet.create({
   },
   calculatorButton: {
     fontSize: theme.text.size.lg.fontSize,
+    lineHeight: theme.text.size.lg.lineHeight,
+    fontWeight: 'bold',
+    color: theme.colors.primary.regular,
     padding: theme.spacing.md,
   },
 });
