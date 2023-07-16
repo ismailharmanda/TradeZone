@@ -8,11 +8,21 @@ import {GenericActionCreator} from 'utils';
 import {CartProduct} from './cart';
 import {Button} from 'common/Button';
 import {CartSummary} from 'components/CartSummary';
+import {Toast} from 'react-native-toast-message/lib/src/Toast';
 
 export const CartScreen = () => {
   const dispatch = useDispatch();
 
   const cartState = useSelector<GlobalState, CartState>(state => state.CART);
+
+  const showToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Your order has been placed',
+      position: 'bottom',
+      visibilityTime: 2000,
+    });
+  };
 
   const onPlusPress = (product: CartProduct) => {
     dispatch(
@@ -48,6 +58,7 @@ export const CartScreen = () => {
         type: CART_ACTION_TYPES.CART_BUY,
       }),
     );
+    showToast();
   };
 
   return (
