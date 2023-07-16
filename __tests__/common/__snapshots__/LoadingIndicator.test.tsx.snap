@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoadingIndicator renders correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "rgba(0, 0,0, 0.1)",
+        "height": 1334,
+        "justifyContent": "flex-start",
+        "position": "absolute",
+        "width": 750,
+        "zIndex": 2,
+      },
+      false,
+    ]
+  }
+  testID="loading-indicator"
+>
+  <ActivityIndicator
+    color="#ffffff"
+    size="large"
+    style={
+      {
+        "top": "25%",
+        "transform": [
+          {
+            "scaleX": 2,
+          },
+          {
+            "scaleY": 2,
+          },
+        ],
+      }
+    }
+  />
+  <Text
+    style={
+      {
+        "color": "#ffffff",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "lineHeight": 21,
+        "marginHorizontal": 30,
+        "textAlign": "center",
+        "top": "30%",
+      }
+    }
+  >
+    Loading...
+  </Text>
+</View>
+`;

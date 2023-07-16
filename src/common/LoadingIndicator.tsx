@@ -14,7 +14,9 @@ type Props = {
 
 export const LoadingIndicator = ({isLoading, text = 'Loading...'}: Props) => {
   return (
-    <View style={[styles.container, !isLoading && styles.hide]}>
+    <View
+      testID="loading-indicator"
+      style={[styles.container, !isLoading && styles.hide]}>
       <ActivityIndicator
         size={'large'}
         style={styles.activityIndicator}
