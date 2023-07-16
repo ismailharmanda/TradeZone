@@ -28,7 +28,7 @@ export const ProductCard = ({onPress, product}: Props) => {
       <Text numberOfLines={1} style={styles.text}>
         {product.title}
       </Text>
-      <Text style={styles.text}>{product.price} TL</Text>
+      <Text style={styles.textPrice}>{product.price} TL</Text>
     </TouchableOpacity>
   );
 };
@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.secondary.transparent,
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    width: HEIGHT / 10,
-    height: HEIGHT / 7,
+    width: HEIGHT / 6,
+    height: HEIGHT / 4,
     borderWidth: 1,
     borderColor: theme.colors.secondary.regular,
   },
-  image: {width: HEIGHT / 10, height: HEIGHT / 10},
+  image: {width: HEIGHT / 6, height: HEIGHT / 6},
   button: {
     width: '100%',
     height: theme.height.button,
@@ -69,6 +69,14 @@ const styles = StyleSheet.create({
     fontSize: theme.text.size.sm.fontSize,
     lineHeight: theme.text.size.sm.lineHeight,
     color: theme.colors.base.dark,
+    width: '100%',
+    flexWrap: 'wrap',
+  },
+  textPrice: {
+    fontWeight: 'bold',
+    fontSize: theme.text.size.sm.fontSize,
+    lineHeight: theme.text.size.sm.lineHeight,
+    color: theme.colors.primary.regular,
     width: '100%',
     flexWrap: 'wrap',
   },
