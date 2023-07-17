@@ -38,12 +38,13 @@ export const ProductsList = ({
   const isCategoryActive = activeCategory === category;
 
   const ItemSeperator = useCallback(
-    () => <View style={styles.itemSeperator} />,
+    () => <View testID="itemSeparator" style={styles.itemSeperator} />,
     [],
   );
 
   return (
     <View
+      testID="productsList"
       style={[
         styles.container,
         !!activeCategory && activeCategory !== category && styles.hide,
@@ -51,6 +52,7 @@ export const ProductsList = ({
       ]}>
       <Text style={styles.text}>{category}</Text>
       <FlatList
+        testID="flatList"
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={ItemSeperator}
