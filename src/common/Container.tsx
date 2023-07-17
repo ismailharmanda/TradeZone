@@ -28,7 +28,7 @@ export const Container = ({
       resizeMode="contain"
       style={[styles.logo, withLogo ? null : styles.hide]}
     />
-    {withLogo && <Text style={styles.brand}>TrendZone</Text>}
+    {withLogo && <Text style={styles.brand}>TradeZone</Text>}
     {children}
   </KeyboardAvoidingView>
 );
