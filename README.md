@@ -25,11 +25,13 @@ You can watch the Demo Record: [DEMO](https://streamable.com/7a8dfg)
 
 <br/>
 
-<h3>You can log in with any <span style="color:rgb(255,119,5);font-weight:bold">email</span> and <span style="color:rgb(255,119,5);font-weight:bold">password</span> that complies with the validation rules.</h3>
+## Authentication
+
+You can log in with any <kbd>email</kbd> and <kbd>password</kbd>that complies with the validation rules.
 
 <br/>
 
-<h3>In the project, I used the endpoints provided by fakestoreapi as much as possible. Since I could not find answers to some needs in the endpoints, I installed the necessary logics in the frontend. One of them was for the search feature. Apart from that, I simulated api calls as much as possible.</h3>
+<h4>In the project, I used the endpoints provided by fakestoreapi as much as possible. Since I could not find answers to some needs in the endpoints, I installed the necessary logics in the frontend. One of them was for the search feature. Apart from that, I simulated api calls as much as possible.</h4>
 
 <br/>
 
