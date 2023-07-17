@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCard renders the component correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(240,237,246,0.6)",
+      "borderColor": "rgb(240,237,246)",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "height": 333.5,
+      "justifyContent": "space-evenly",
+      "opacity": 1,
+      "overflow": "hidden",
+      "width": 222.33333333333334,
+    }
+  }
+  testID="productCard"
+>
+  <Image
+    resizeMode="contain"
+    source={
+      {
+        "uri": "https://example.com/image.png",
+      }
+    }
+    style={
+      {
+        "height": 222.33333333333334,
+        "width": 222.33333333333334,
+      }
+    }
+    testID="productImage"
+  />
+  <Text
+    numberOfLines={1}
+    style={
+      {
+        "color": "#5A5A5A",
+        "flexWrap": "wrap",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "lineHeight": 16.8,
+        "width": "100%",
+      }
+    }
+  >
+    Product 1
+  </Text>
+  <Text
+    style={
+      {
+        "color": "rgb(255,119,5)",
+        "flexWrap": "wrap",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "lineHeight": 16.8,
+        "width": "100%",
+      }
+    }
+  >
+    10
+     TL
+  </Text>
+</View>
+`;
