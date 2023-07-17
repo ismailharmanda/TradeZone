@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartSummary renders correctly 1`] = `
+<View
+  style={
+    {
+      "backgroundColor": "rgba(240,237,246,0.6)",
+      "borderColor": "rgba(0,110,94,0.6)",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "gap": 16,
+      "padding": 8,
+      "width": "100%",
+    }
+  }
+  testID="cart-summary-container"
+>
+  <Text
+    style={
+      {
+        "color": "#5A5A5A",
+        "flexWrap": "wrap",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "lineHeight": 16.8,
+        "width": "100%",
+      }
+    }
+  >
+    Sub Total: 
+    100
+     TL
+  </Text>
+  <View />
+  <Text
+    style={
+      {
+        "color": "#5A5A5A",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "lineHeight": 21,
+      }
+    }
+  >
+    Summary:
+     
+    <Text
+      style={
+        {
+          "color": "rgb(255,119,5)",
+        }
+      }
+    >
+      0
+       TL
+    </Text>
+  </Text>
+</View>
+`;

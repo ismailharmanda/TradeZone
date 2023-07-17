@@ -18,7 +18,7 @@ interface Props {
 export const CartSummary = ({subTotal, discounts, summary}: Props) => {
   const categories: string[] = Object.keys(discounts);
   return (
-    <View style={styles.container}>
+    <View testID="cart-summary-container" style={styles.container}>
       <Text style={styles.textTitle}>Sub Total: {subTotal} TL</Text>
       <View>
         {!!categories.length && (

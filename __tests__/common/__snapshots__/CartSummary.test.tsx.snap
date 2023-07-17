@@ -13,6 +13,7 @@ exports[`CartSummary renders correctly 1`] = `
       "width": "100%",
     }
   }
+  testID="cart-summary-container"
 >
   <Text
     style={
