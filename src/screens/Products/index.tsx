@@ -22,6 +22,7 @@ export const ProductsScreen = ({navigation, route}: Props) => {
   const dispatch = useDispatch();
   const {productId, title} = route?.params || {};
   const [activeCategory, setActiveCategory] = useState<string>('');
+  const [searchText, setSearchText] = useState<string>('');
 
   const [visibleProducts, setVisibleProducts] = useState<{
     [key: string]: boolean;
@@ -55,6 +56,7 @@ export const ProductsScreen = ({navigation, route}: Props) => {
   );
 
   const toggleCategory = (category: string) => {
+    setSearchText('');
     toggleVisibleProducts('productsByCategory');
     if (activeCategory === category) {
       setActiveCategory('' as string);
@@ -108,6 +110,7 @@ export const ProductsScreen = ({navigation, route}: Props) => {
   );
 
   const onSearch = (text: string) => {
+    setSearchText(text);
     setActiveCategory('');
     if (text === '') {
       toggleVisibleProducts('productsByCategory');
@@ -124,6 +127,7 @@ export const ProductsScreen = ({navigation, route}: Props) => {
     <ScrollableContentContainer contentContainerStyle={styles.contentContainer}>
       <View style={styles.filterContainer}>
         <TextInput
+          value={searchText}
           onChangeText={onSearch}
           placeholder="Search a product or brand"
         />
