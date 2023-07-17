@@ -17,8 +17,12 @@ const HEIGHT = Dimensions.get('window').height;
 
 export const ProductCard = ({onPress, product}: Props) => {
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity
+      testID="productCard"
+      style={styles.container}
+      onPress={onPress}>
       <Image
+        testID="productImage"
         style={styles.image}
         resizeMode="contain"
         source={{
