@@ -22,8 +22,8 @@ exports[`TextInput renders correctly 1`] = `
       {
         "backgroundColor": "rgb(240,237,246)",
         "borderRadius": 8,
-        "color": "#5A5A5A",
-        "fontWeight": "bold",
+        "color": "rgb(255,119,5)",
+        "fontWeight": "500",
         "height": 48,
         "paddingHorizontal": 8,
       }
