@@ -50,7 +50,7 @@ exports[`Container component renders correctly 1`] = `
       }
     }
   >
-    TrendZone
+    TradeZone
   </Text>
 </View>
 `;
