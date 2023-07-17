@@ -56,11 +56,11 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: theme.colors.secondary.regular,
-    color: theme.colors.base.dark,
+    color: theme.colors.primary.regular,
     height: theme.height.input,
     borderRadius: theme.radius,
     paddingHorizontal: theme.spacing.sm,
-    fontWeight: 'bold',
+    fontWeight: '500',
   },
   error: {
     fontSize: theme.text.size.sm.fontSize,
