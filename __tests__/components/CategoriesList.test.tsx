@@ -164,4 +164,23 @@ describe('CategoriesList', () => {
     expect(flatList.props.keyExtractor(data[1])).toBe(data[1]);
     expect(flatList.props.keyExtractor(data[2])).toBe(data[2]);
   });
+
+  it('applies the custom contentContainerStyle', () => {
+    const data = ['Category 1', 'Category 2', 'Category 3'];
+    const renderItem = jest.fn();
+    const ListEmptyComponent = <View testID="emptyComponent" />;
+    const contentContainerStyle = {paddingHorizontal: 10};
+    const {getByTestId} = render(
+      <CategoriesList
+        data={data}
+        renderItem={renderItem}
+        ListEmptyComponent={ListEmptyComponent}
+        contentContainerStyle={contentContainerStyle}
+      />,
+    );
+
+    expect(getByTestId('flatList').props.contentContainerStyle).toEqual(
+      contentContainerStyle,
+    );
+  });
 });
