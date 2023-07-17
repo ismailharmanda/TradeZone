@@ -19,6 +19,15 @@ describe('ProductCard', () => {
       count: 10,
     },
   };
+
+  it('renders the component correctly', () => {
+    const onPress = jest.fn();
+    const {toJSON} = render(
+      <ProductCard onPress={onPress} product={product} />,
+    );
+    expect(toJSON()).toMatchSnapshot();
+  });
+
   it('renders the ProductCard component', () => {
     const onPress = jest.fn();
 
