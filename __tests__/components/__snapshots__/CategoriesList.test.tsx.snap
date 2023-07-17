@@ -73,6 +73,7 @@ exports[`CategoriesList renders the component correctly 1`] = `
               "width": 16,
             }
           }
+          testID="itemSeparator"
         />
       </View>
       <View
@@ -93,6 +94,7 @@ exports[`CategoriesList renders the component correctly 1`] = `
               "width": 16,
             }
           }
+          testID="itemSeparator"
         />
       </View>
       <View

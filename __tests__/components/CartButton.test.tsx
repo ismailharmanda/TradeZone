@@ -1,5 +1,4 @@
-// disable warning:
-/* eslint-disable */
+// @ts-nocheck
 import React from 'react';
 import {render, fireEvent} from 'react-native-testing-library';
 import {CartButton} from 'components/CartButton';

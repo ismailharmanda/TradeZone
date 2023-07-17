@@ -27,7 +27,7 @@ export const CategoriesList = ({
   const keyExtractor = useCallback((item: any) => item, []);
 
   const ItemSeperator = useCallback(
-    () => <View style={styles.itemSeperator} />,
+    () => <View testID="itemSeparator" style={styles.itemSeperator} />,
     [],
   );
 
