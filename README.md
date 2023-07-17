@@ -1,4 +1,4 @@
-<h1 style="color:rgb(255,119,5);font-weight:bold;text-align:center" >Welcome to TrendZone 👋</h1>
+<h1 style="color:rgb(255,119,5);font-weight:bold;text-align:center" >Welcome to TradeZone 👋</h1>
 
 ## _Fashion starts here.._
 
@@ -96,9 +96,52 @@ This is one way to run your app — you can also run it directly from within And
 
 ## Congratulations! 🎉
 
-You've successfully run and modified your React Native App. 🥳
+You've successfully run TradeZone 🥳
 
 <br/>
+
+## Deep Linking
+
+Deep linking allows users to navigate to specific screens or perform actions within app by clicking on or typing in specific URLs. In TradeZone, I have implemented deep links to provide a seamless and convenient way for users to access product details and their shopping cart directly.
+
+### Supported Deep Links:
+
+The following deep links are supported in TradeZone. Similarly, you can open the deep links on Android using the --android flag:
+
+<kbd>tradezone://product/:productId/:productTitle</kbd> Navigates to the product details screen for a specific product. Replace <kbd>:productId</kbd> with the ID of the product and <kbd>:productTitle</kbd> with the title of the product. For example:
+
+```bash
+npx uri-scheme open "tradezone://product/3/SSD" --ios
+
+```
+
+<kbd>tradezone://cart</kbd> Navigates to the user's shopping cart screen. For example:
+
+```bash
+npx uri-scheme open "tradezone://cart" --ios
+
+```
+
+<br/>
+
+## Running Tests:
+
+TradeZone comes with a comprehensive test suite to ensure the stability and functionality of the application. You can run these tests using the following command:
+
+```bash
+yarn test
+
+```
+
+ <br/>
+
+## Boot Splash Screen
+
+TradeZone features a boot splash screen that appears when the application is launched, providing a visually appealing and branded experience to users during the initial loading phase. The boot splash screen is a static image that serves as a placeholder while the app initializes and prepares its core components for use.
+
+The boot splash screen in TradeZone is designed to capture users' attention and maintain a consistent brand image. It helps create a smooth transition from the launch process to the main application interface, improving the overall user experience.
+
+ <br/>
 
 ## Author
 
