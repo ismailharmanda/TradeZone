@@ -11,8 +11,9 @@ export const CartButton = () => {
   };
 
   return (
-    <TouchableOpacity onPress={onCartPress}>
+    <TouchableOpacity testID="touchable-opacity" onPress={onCartPress}>
       <MaterialCommunityIcons
+        testID="cart-icon"
         name="cart"
         size={26}
         color={theme.colors.primary.regular}
