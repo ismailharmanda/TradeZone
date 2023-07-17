@@ -11,7 +11,7 @@ import {RouteProp} from '@react-navigation/native';
 import {theme} from 'theme';
 import {Button} from 'common/Button';
 import Toast from 'react-native-toast-message';
-import {CART_ACTION_TYPES, CartState} from 'screens/Cart/cart.action';
+import {CART_ACTION_TYPES} from 'screens/Cart/cart.action';
 import {LoadingIndicator} from 'common/LoadingIndicator';
 
 interface Props {
@@ -47,8 +47,6 @@ export const ProductDetailScreen = ({route}: Props) => {
   const productDetailState = useSelector<GlobalState, ProductDetailState>(
     state => state.PRODUCT_DETAIL,
   );
-  const cartState = useSelector<GlobalState, CartState>(state => state.CART);
-  console.log('productDetailState', cartState);
 
   useEffect(() => {
     if (productId == null || undefined) {

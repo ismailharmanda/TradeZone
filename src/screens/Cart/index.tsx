@@ -54,8 +54,6 @@ export const CartScreen = ({navigation}: Props) => {
     );
   };
 
-  console.log('cartState', cartState);
-
   const onCheckoutPress = () => {
     dispatch(
       GenericActionCreator({
