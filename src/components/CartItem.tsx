@@ -30,11 +30,13 @@ export const CartItem = ({
 }: Props) => {
   return (
     <TouchableOpacity
+      testID="touchable"
       onPress={() => {
         onPress(product);
       }}
       style={styles.container}>
       <Image
+        testID="product-image"
         style={styles.image}
         resizeMode="contain"
         source={{
@@ -62,6 +64,7 @@ export const CartItem = ({
         </View>
         <TouchableOpacity onPress={() => onDelete(product)}>
           <MaterialCommunityIcons
+            testID="trash-icon"
             name="trash-can-outline"
             color={theme.colors.base.dark}
             size={26}

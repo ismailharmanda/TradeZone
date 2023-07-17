@@ -1,0 +1,282 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem renders correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "rgba(240,237,246,0.6)",
+      "borderColor": "rgb(240,237,246)",
+      "borderRadius": 8,
+      "borderWidth": 1,
+      "flexDirection": "row",
+      "gap": 8,
+      "height": 190.57142857142858,
+      "justifyContent": "flex-start",
+      "opacity": 1,
+      "overflow": "hidden",
+      "paddingHorizontal": 8,
+      "paddingVertical": 8,
+      "width": "100%",
+    }
+  }
+  testID="touchable"
+>
+  <Image
+    resizeMode="contain"
+    source={
+      {
+        "uri": "https://example.com/image.png",
+      }
+    }
+    style={
+      {
+        "flex": 1,
+        "height": "100%",
+        "width": "20%",
+      }
+    }
+    testID="product-image"
+  />
+  <View
+    style={
+      {
+        "flex": 2,
+        "height": "100%",
+        "justifyContent": "space-evenly",
+      }
+    }
+  >
+    <Text
+      numberOfLines={3}
+      style={
+        {
+          "color": "#5A5A5A",
+          "flexWrap": "wrap",
+          "fontSize": 12,
+          "fontWeight": "bold",
+          "lineHeight": 14.4,
+          "width": "100%",
+        }
+      }
+    >
+      Product 1
+    </Text>
+    <Text
+      adjustsFontSizeToFit={true}
+      numberOfLines={1}
+      style={
+        {
+          "color": "rgb(255,119,5)",
+          "flexWrap": "wrap",
+          "fontSize": 14,
+          "fontWeight": "bold",
+          "lineHeight": 16.8,
+          "width": "100%",
+        }
+      }
+    >
+      10
+       × 
+      2
+       =
+       
+      20
+       TL
+    </Text>
+  </View>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "flex": 1,
+        "height": "100%",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "rgb(255,119,5)",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "lineHeight": 21,
+              "padding": 16,
+            }
+          }
+        >
+          -
+        </Text>
+      </View>
+      <Text
+        style={
+          {
+            "fontSize": 20,
+          }
+        }
+      >
+        2
+      </Text>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "opacity": 1,
+          }
+        }
+      >
+        <Text
+          style={
+            {
+              "color": "rgb(255,119,5)",
+              "fontSize": 20,
+              "fontWeight": "bold",
+              "lineHeight": 21,
+              "padding": 16,
+            }
+          }
+        >
+          +
+        </Text>
+      </View>
+    </View>
+    <View
+      accessibilityState={
+        {
+          "busy": undefined,
+          "checked": undefined,
+          "disabled": undefined,
+          "expanded": undefined,
+          "selected": undefined,
+        }
+      }
+      accessibilityValue={
+        {
+          "max": undefined,
+          "min": undefined,
+          "now": undefined,
+          "text": undefined,
+        }
+      }
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        {
+          "opacity": 1,
+        }
+      }
+    >
+      <MaterialCommunityIcons
+        color="#5A5A5A"
+        name="trash-can-outline"
+        size={26}
+        testID="trash-icon"
+      />
+    </View>
+  </View>
+</View>
+`;
