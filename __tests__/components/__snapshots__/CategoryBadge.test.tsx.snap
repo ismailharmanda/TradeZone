@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryBadge renders the component correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": undefined,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "borderColor": "rgb(255,119,5)",
+        "borderRadius": 8,
+        "borderWidth": 0.2,
+        "justifyContent": "center",
+      },
+      {
+        "backgroundColor": "rgb(255,119,5)",
+      },
+    ]
+  }
+  testID="categoryBadge"
+>
+  <Text
+    style={
+      [
+        {
+          "color": "rgb(255,119,5)",
+          "padding": 8,
+          "textTransform": "uppercase",
+        },
+        {
+          "color": "#ffffff",
+          "textDecorationLine": "none",
+        },
+      ]
+    }
+  >
+    Category 1
+  </Text>
+</View>
+`;
