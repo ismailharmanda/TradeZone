@@ -26,8 +26,8 @@ export const CategoriesList = ({
 }: Props) => {
   const keyExtractor = useCallback((item: any) => item, []);
 
-  const ItemSeperator = useCallback(
-    () => <View testID="itemSeparator" style={styles.itemSeperator} />,
+  const ItemSeparator = useCallback(
+    () => <View testID="itemSeparator" style={styles.itemSeparator} />,
     [],
   );
 
@@ -36,7 +36,7 @@ export const CategoriesList = ({
       <FlatList
         testID="flatList"
         showsHorizontalScrollIndicator={false}
-        ItemSeparatorComponent={ItemSeperator}
+        ItemSeparatorComponent={ItemSeparator}
         horizontal
         style={[listStyle]}
         contentContainerStyle={contentContainerStyle}
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   container: {
     height: theme.spacing.xl,
   },
-  itemSeperator: {
+  itemSeparator: {
     width: theme.spacing.md,
   },
 });

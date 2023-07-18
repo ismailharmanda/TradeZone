@@ -37,8 +37,8 @@ export const ProductsList = ({
 
   const isCategoryActive = activeCategory === category;
 
-  const ItemSeperator = useCallback(
-    () => <View testID="itemSeparator" style={styles.itemSeperator} />,
+  const ItemSeparator = useCallback(
+    () => <View testID="itemSeparator" style={styles.itemSeparator} />,
     [],
   );
 
@@ -55,7 +55,7 @@ export const ProductsList = ({
         testID="flatList"
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={ItemSeperator}
+        ItemSeparatorComponent={ItemSeparator}
         horizontal={!isCategoryActive && !vertical}
         style={listStyle}
         contentContainerStyle={[
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     marginBottom: theme.spacing.md,
   },
-  itemSeperator: {
+  itemSeparator: {
     width: theme.spacing.md,
   },
   hide: {
