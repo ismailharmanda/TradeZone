@@ -30,7 +30,7 @@ export const calculateTotalAmount = (
   }
 };
 
-const getExistingCartItemAndIndex = (
+export const getExistingCartItemAndIndex = (
   items: CartProduct[],
   payloadId: number,
 ): {existingCartItem: CartProduct; existingCartItemIndex: number} => {
