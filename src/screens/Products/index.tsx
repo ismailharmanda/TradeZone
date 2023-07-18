@@ -139,29 +139,33 @@ export const ProductsScreen = ({navigation, route}: Props) => {
           ListEmptyComponent={<ActivityIndicator />}
         />
       </View>
-      {productsState.categories?.map(category => (
-        <ProductsList
-          containerStyle={
-            !visibleProducts.productsByCategory ? styles.hide : {}
-          }
-          activeCategory={activeCategory}
-          key={category}
-          data={productsState.productsByCategories[category]}
-          category={category}
-          renderItem={renderItem}
-          ListEmptyComponent={<ActivityIndicator />}
-        />
-      ))}
-      {filteredProducts.length > 0 && (
-        <ProductsList
-          vertical={true}
-          containerStyle={!visibleProducts.productsBySearch ? styles.hide : {}}
-          activeCategory={activeCategory}
-          data={filteredProducts}
-          renderItem={renderItem}
-          ListEmptyComponent={<ActivityIndicator />}
-        />
-      )}
+      <View style={styles.productsContainer}>
+        {productsState.categories?.map(category => (
+          <ProductsList
+            containerStyle={
+              !visibleProducts.productsByCategory ? styles.hide : {}
+            }
+            activeCategory={activeCategory}
+            key={category}
+            data={productsState.productsByCategories[category]}
+            category={category}
+            renderItem={renderItem}
+            ListEmptyComponent={<ActivityIndicator />}
+          />
+        ))}
+        {filteredProducts.length > 0 && (
+          <ProductsList
+            vertical={true}
+            containerStyle={
+              !visibleProducts.productsBySearch ? styles.hide : {}
+            }
+            activeCategory={activeCategory}
+            data={filteredProducts}
+            renderItem={renderItem}
+            ListEmptyComponent={<ActivityIndicator />}
+          />
+        )}
+      </View>
       <LoadingIndicator
         isLoading={productsState.loading}
         text={'Products are loading... '}
@@ -176,4 +180,5 @@ const styles = StyleSheet.create({
   },
   hide: {display: 'none'},
   filterContainer: {width: '100%', gap: theme.spacing.sm},
+  productsContainer: {flex: 1},
 });
