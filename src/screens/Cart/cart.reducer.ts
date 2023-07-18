@@ -1,9 +1,12 @@
 import {toFixedNumber} from 'utils';
 import {CartActions, CartState, CART_ACTION_TYPES} from './cart.action';
-import {getUpdatedItemsAfterCartAddAction} from 'utils/addCartUtils';
-import {calculateTotalAmount} from 'utils';
-import {getUpdatedItemsAfterCartDeleteSingleAction} from 'utils/deleteCartSingleUtils';
-import {getUpdatedItemsAfterCartDeleteAllAction} from 'utils/deleteCartAllUtils';
+import {
+  calculateTotalAmount,
+  getUpdatedItemsAfterCartAddAction,
+  getUpdatedItemsAfterCartDeleteAllAction,
+  getUpdatedItemsAfterCartDeleteSingleAction,
+} from './cartUtils';
+
 const initialState: CartState = {
   loading: false,
   items: [],
