@@ -12,7 +12,7 @@ export const GenericActionCreator: IGenericAction = ({
   payload,
 });
 
-export const emailValidator = (email: string) => {
+export const emailValidator = (email: string): string => {
   const re = /\S+@\S+\.\S+/;
 
   if (!email || email.length <= 0) {
