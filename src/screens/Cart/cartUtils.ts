@@ -6,7 +6,6 @@ import {
   CartDeleteSingleAction,
   CART_ACTION_TYPES,
 } from 'screens/Cart/cart.action';
-import {Product} from 'screens/Products/products';
 import {CartProduct} from 'screens/Cart/cart';
 
 type updatedTotalByCategoryType = {
@@ -44,7 +43,7 @@ export const getUpdatedItemsAfterCartAddAction = (
   state: CartState,
   action: CartAddAction,
 ): {
-  updatedItems: Product[];
+  updatedItems: CartProduct[];
   updatedTotalByCategory: updatedTotalByCategoryType;
 } => {
   const {existingCartItem, existingCartItemIndex} = getExistingCartItemAndIndex(
@@ -132,7 +131,7 @@ export const getUpdatedItemsAfterCartDeleteAllAction = (
   state: CartState,
   action: CartDeleteAllAction,
 ): {
-  updatedItems: Product[];
+  updatedItems: CartProduct[];
   updatedTotalByCategory: updatedTotalByCategoryType;
 } => {
   let updatedItems = state.items.filter(item => item.id !== action.payload.id);
@@ -200,7 +199,7 @@ export const getUpdatedItemsAfterCartDeleteSingleAction = (
   state: CartState,
   action: CartDeleteSingleAction,
 ): {
-  updatedItems: Product[];
+  updatedItems: CartProduct[];
   updatedTotalByCategory: updatedTotalByCategoryType;
 } => {
   const {existingCartItem, existingCartItemIndex} = getExistingCartItemAndIndex(
