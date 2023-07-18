@@ -10,7 +10,7 @@ import {theme} from 'theme';
 import {ProductCard} from 'components/ProductCard';
 import {CategoriesList} from 'components/CategoriesList';
 import {CategoryBadge} from 'components/CategoryBadge';
-import {TextInput} from 'common/TextInput';
+import {Input} from 'common/Input';
 import {Product} from './products';
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from 'navigation/navigationService';
@@ -126,7 +126,7 @@ export const ProductsScreen = ({navigation, route}: Props) => {
   return (
     <ScrollableContentContainer contentContainerStyle={styles.contentContainer}>
       <View style={styles.filterContainer}>
-        <TextInput
+        <Input
           value={searchText}
           onChangeText={onSearch}
           placeholder="Search a product or brand"

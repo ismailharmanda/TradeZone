@@ -1,9 +1,9 @@
 import React from 'react';
 import {render, fireEvent} from 'react-native-testing-library';
 import renderer from 'react-test-renderer';
-import {TextInput} from 'common/TextInput';
+import {Input} from 'common/Input';
 
-describe('TextInput', () => {
+describe('Input', () => {
   const onChangeText = jest.fn();
   const placeholder = 'Enter text';
   const value = 'Hello';
@@ -12,7 +12,7 @@ describe('TextInput', () => {
   it('renders correctly', () => {
     const tree = renderer
       .create(
-        <TextInput
+        <Input
           value={value}
           onChangeText={onChangeText}
           placeholder={placeholder}
@@ -24,7 +24,7 @@ describe('TextInput', () => {
 
   it('renders the component correctly', () => {
     const {getByPlaceholder} = render(
-      <TextInput
+      <Input
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
@@ -37,7 +37,7 @@ describe('TextInput', () => {
 
   it('calls onChangeText when the input text changes', () => {
     const {getByPlaceholder} = render(
-      <TextInput
+      <Input
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
@@ -52,7 +52,7 @@ describe('TextInput', () => {
 
   it('displays error text when error is true', () => {
     const {getByText} = render(
-      <TextInput
+      <Input
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}

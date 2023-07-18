@@ -5,7 +5,7 @@ import {LOGIN_ACTION_TYPES, LoginState} from './login.action';
 import {GlobalState} from 'store/reducers';
 import {Container} from 'common/Container';
 import {Button} from 'common/Button';
-import {TextInput} from 'common/TextInput';
+import {Input} from 'common/Input';
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
@@ -46,13 +46,13 @@ export const LoginScreen = () => {
 
   return (
     <Container>
-      <TextInput
+      <Input
         onChangeText={onChangeEmail}
         errorText={email.error}
         placeholder="Email"
         textContentType="emailAddress"
       />
-      <TextInput
+      <Input
         onChangeText={onChangePassword}
         errorText={password.error}
         placeholder="Password"

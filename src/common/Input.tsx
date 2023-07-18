@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  TextInput as Input,
-  ViewStyle,
-} from 'react-native';
+import {View, StyleSheet, Text, TextInput, ViewStyle} from 'react-native';
 import {theme} from 'theme';
 import {TextInputProps} from 'react-native';
 
@@ -21,7 +15,7 @@ interface Props {
   error?: boolean;
 }
 
-export const TextInput = ({
+export const Input = ({
   containerStyle,
   value,
   disabled,
@@ -32,7 +26,7 @@ export const TextInput = ({
   ...props
 }: Props) => (
   <View style={[styles.container, containerStyle]}>
-    <Input
+    <TextInput
       autoCapitalize="none"
       keyboardType={
         textContentType === 'emailAddress' ? 'email-address' : 'default'
