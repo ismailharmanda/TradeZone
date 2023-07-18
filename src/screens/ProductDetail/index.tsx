@@ -60,31 +60,28 @@ export const ProductDetailScreen = ({route}: Props) => {
     );
   }, [dispatch, productId]);
 
-  return productDetailState.loading ? (
-    <LoadingIndicator isLoading={productDetailState.loading} />
-  ) : (
+  if (productDetailState.loading) {
+    return <LoadingIndicator isLoading={productDetailState.loading} />;
+  }
+  const {product} = productDetailState || {};
+
+  return (
     <View style={styles.container}>
       <Image
         style={styles.image}
         resizeMode="contain"
         source={{
-          uri: productDetailState?.product?.image,
+          uri: product?.image,
         }}
       />
       <View style={styles.infoWrapper}>
         <View style={styles.textWrapper}>
-          <Text style={styles.textTitle}>
-            {productDetailState.product?.title}
-          </Text>
-          <Text style={styles.textPrice}>
-            {productDetailState.product?.price} TL
-          </Text>
+          <Text style={styles.textTitle}>{product?.title}</Text>
+          <Text style={styles.textPrice}>{product?.price} TL</Text>
         </View>
         <Button style={styles.button} text="Add To Cart" onPress={addToCart} />
       </View>
-      <Text style={styles.textDescription}>
-        {productDetailState.product?.description}
-      </Text>
+      <Text style={styles.textDescription}>{product?.description}</Text>
     </View>
   );
 };
