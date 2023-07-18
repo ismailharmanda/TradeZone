@@ -2,7 +2,7 @@ import {LoginActions, LoginState, LOGIN_ACTION_TYPES} from './login.action';
 
 const initialState: LoginState = {
   loading: false,
-  isUserAuthenticaed: false,
+  isUserAuthenticated: false,
   token: '',
 };
 
@@ -16,7 +16,7 @@ export default (state = initialState, action: LoginActions) => {
     case LOGIN_ACTION_TYPES.LOGIN_SUCCESS:
       return {
         ...state,
-        isUserAuthenticaed: true,
+        isUserAuthenticated: true,
         token: action.payload,
         loading: false,
       };
@@ -28,7 +28,7 @@ export default (state = initialState, action: LoginActions) => {
     case LOGIN_ACTION_TYPES.LOGOUT:
       return {
         loading: false,
-        isUserAuthenticaed: false,
+        isUserAuthenticated: false,
         token: '',
       };
     case LOGIN_ACTION_TYPES.SET_LOADING:

@@ -12,12 +12,12 @@ import {LoginState} from 'screens/Login/login.action';
 const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
 export const Navigation = () => {
-  const {isUserAuthenticaed} = useSelector<GlobalState, LoginState>(
+  const {isUserAuthenticated} = useSelector<GlobalState, LoginState>(
     state => state.LOGIN,
   );
   return (
     <NavigationContainer linking={linking} ref={navigationRef}>
-      {isUserAuthenticaed ? <UserNavigator /> : <GuestNavigator />}
+      {isUserAuthenticated ? <UserNavigator /> : <GuestNavigator />}
     </NavigationContainer>
   );
 };

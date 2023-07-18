@@ -11,7 +11,7 @@ export enum LOGIN_ACTION_TYPES {
 
 export interface LoginState {
   loading: boolean;
-  isUserAuthenticaed: boolean;
+  isUserAuthenticated: boolean;
   token: string;
 }
 
@@ -20,7 +20,7 @@ export interface LoginRequestAction {
   payload: LoginInfo;
 }
 
-export interface LoginSuccesAction {
+export interface LoginSuccessAction {
   type: LOGIN_ACTION_TYPES.LOGIN_SUCCESS;
   payload: string;
 }
@@ -48,7 +48,7 @@ export interface PersistAction {
 
 export type LoginActions =
   | LoginRequestAction
-  | LoginSuccesAction
+  | LoginSuccessAction
   | LoginFailAction
   | LogoutAction
   | SetLoadingAction

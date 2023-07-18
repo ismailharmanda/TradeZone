@@ -1,20 +1,18 @@
 import {
-  LoginRequestAction,
   LOGIN_ACTION_TYPES,
   SetLoadingAction,
-  LoginSuccesAction,
+  LoginSuccessAction,
 } from './login.action';
 import {ForkEffect, put, call, takeLatest} from 'redux-saga/effects';
 import {GenericActionCreator} from 'utils';
 import {loginService} from 'services';
 import {AxiosResponse} from 'axios';
 
-function* LoginRequestSaga(action: LoginRequestAction) {
-  console.log(action);
+function* LoginRequestSaga() {
   try {
     const loginData: AxiosResponse = yield call(loginService);
     yield put(
-      GenericActionCreator<LoginSuccesAction>({
+      GenericActionCreator<LoginSuccessAction>({
         type: LOGIN_ACTION_TYPES.LOGIN_SUCCESS,
         payload: loginData.data.token,
       }),
