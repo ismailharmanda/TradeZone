@@ -41,7 +41,9 @@ export const ProductsScreen = ({navigation, route}: Props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigation]);
 
-  const toggleVisibleProducts = (key: string) => {
+  const toggleVisibleProducts = (
+    key: 'productsByCategory' | 'productsBySearch',
+  ) => {
     setVisibleProducts({
       productsByCategory: false,
       productsBySearch: false,
@@ -117,7 +119,7 @@ export const ProductsScreen = ({navigation, route}: Props) => {
     } else {
       toggleVisibleProducts('productsBySearch');
     }
-    const productsBySearch = productsState.products.filter(product =>
+    const productsBySearch = productsState.products?.filter(product =>
       product.title.toLowerCase().includes(text.toLowerCase()),
     );
     setFilteredProducts(productsBySearch);
