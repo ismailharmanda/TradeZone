@@ -1,6 +1,9 @@
 import {toFixedNumber} from 'utils';
 import {CartActions, CartState, CART_ACTION_TYPES} from './cart.action';
-
+import {getUpdatedItemsAfterCartAddAction} from 'utils/addCartUtils';
+import {calculateTotalAmount} from 'utils';
+import {getUpdatedItemsAfterCartDeleteSingleAction} from 'utils/deleteCartSingleUtils';
+import {getUpdatedItemsAfterCartDeleteAllAction} from 'utils/deleteCartAllUtils';
 const initialState: CartState = {
   loading: false,
   items: [],
@@ -23,94 +26,13 @@ const initialState: CartState = {
 export default (state = initialState, action: CartActions) => {
   switch (action.type) {
     case CART_ACTION_TYPES.CART_ADD:
-      const updatedTotalAmount = state.totalAmount + action.payload.price;
-      const existingCartItemIndex = state.items.findIndex(
-        item => item.id === action.payload.id,
+      const updatedTotalAmount = calculateTotalAmount(
+        state.totalAmount,
+        action.payload.price,
+        action,
       );
-      const existingCartItem = state.items[existingCartItemIndex];
-      let updatedItems;
-      if (existingCartItem) {
-        const updatedItem = {
-          ...existingCartItem,
-          quantity: existingCartItem.quantity + 1,
-        };
-        updatedItems = [...state.items];
-        updatedItems[existingCartItemIndex] = updatedItem;
-      } else {
-        updatedItems = [
-          ...state.items,
-          {
-            quantity: 1,
-            ...action.payload,
-          },
-        ];
-      }
-
-      const updatedTotalByCategory: {
-        [key: string]: {
-          total: number;
-          summary: number;
-          discountAmount: number;
-          percentage: number;
-        };
-      } = {};
-
-      updatedItems.forEach(item => {
-        if (item.category in state.discountedCategories) {
-          updatedTotalByCategory[item.category] = {
-            total: toFixedNumber(
-              (updatedTotalByCategory[item.category]?.total || 0) +
-                item.price * item.quantity,
-              2,
-            ),
-            summary: toFixedNumber(
-              (updatedTotalByCategory[item.category]?.summary || 0) +
-                item.price * item.quantity,
-              2,
-            ),
-            discountAmount: toFixedNumber(
-              toFixedNumber(
-                (updatedTotalByCategory[item.category]?.total || 0) +
-                  item.price * item.quantity,
-                2,
-              ) -
-                toFixedNumber(
-                  (updatedTotalByCategory[item.category]?.summary || 0) +
-                    item.price * item.quantity,
-                  2,
-                ),
-              2,
-            ),
-            percentage:
-              state.discountedCategories[item.category]?.discount || 0,
-          };
-          if (
-            updatedTotalByCategory[item.category].total >=
-            state.discountedCategories[item.category].minTotal
-          ) {
-            updatedTotalByCategory[item.category].summary = toFixedNumber(
-              updatedTotalByCategory[item.category].total -
-                updatedTotalByCategory[item.category].total *
-                  state.discountedCategories[item.category].discount,
-              2,
-            );
-            updatedTotalByCategory[item.category].discountAmount =
-              toFixedNumber(
-                updatedTotalByCategory[item.category].total *
-                  state.discountedCategories[item.category].discount,
-                2,
-              );
-          }
-        } else {
-          updatedTotalByCategory[item.category] = {
-            total: toFixedNumber(item.price * item.quantity, 2),
-            summary: toFixedNumber(item.price * item.quantity, 2),
-            discountAmount: 0,
-            percentage:
-              state.discountedCategories[item.category]?.discount || 0,
-          };
-        }
-      });
+      const {updatedItems, updatedTotalByCategory} =
+        getUpdatedItemsAfterCartAddAction(state, action);
 
       const totalDiscount = Object.values(updatedTotalByCategory).reduce(
         (acc, curr) => acc + curr.discountAmount,
@@ -120,7 +42,7 @@ export default (state = initialState, action: CartActions) => {
       return {
         ...state,
         items: updatedItems,
-        totalAmount: toFixedNumber(updatedTotalAmount, 2),
+        totalAmount: updatedTotalAmount,
         summary: toFixedNumber(updatedTotalAmount - totalDiscount, 2),
         totalDiscount: toFixedNumber(totalDiscount, 2),
         totalByCategory: updatedTotalByCategory,
@@ -134,90 +56,16 @@ export default (state = initialState, action: CartActions) => {
         totalDiscount: 0,
       };
     case CART_ACTION_TYPES.CART_DELETE_SINGLE:
-      const existingCartItemIndex1 = state.items.findIndex(
-        item => item.id === action.payload.id,
+      const updatedTotalAmount1 = calculateTotalAmount(
+        state.totalAmount,
+        action.payload.price,
+        action,
       );
-      const existingCartItem1 = state.items[existingCartItemIndex1];
-      const updatedTotalAmount1 = state.totalAmount - existingCartItem1.price;
-      let updatedItems1;
-      if (existingCartItem1.quantity === 1) {
-        updatedItems1 = state.items.filter(
-          item => item.id !== action.payload.id,
-        );
-      } else {
-        const updatedItem1 = {
-          ...existingCartItem1,
-          quantity: existingCartItem1.quantity - 1,
-        };
-        updatedItems1 = [...state.items];
-        updatedItems1[existingCartItemIndex1] = updatedItem1;
-      }
 
-      const updatedTotalByCategory1: {
-        [key: string]: {
-          total: number;
-          summary: number;
-          discountAmount: number;
-          percentage: number;
-        };
-      } = {};
-
-      updatedItems1.forEach(item => {
-        if (item.category in state.discountedCategories) {
-          updatedTotalByCategory1[item.category] = {
-            total: toFixedNumber(
-              (updatedTotalByCategory1[item.category]?.total || 0) +
-                item.price * item.quantity,
-              2,
-            ),
-            summary: toFixedNumber(
-              (updatedTotalByCategory1[item.category]?.summary || 0) +
-                item.price * item.quantity,
-              2,
-            ),
-            discountAmount: toFixedNumber(
-              toFixedNumber(
-                (updatedTotalByCategory1[item.category]?.total || 0) +
-                  item.price * item.quantity,
-                2,
-              ) -
-                toFixedNumber(
-                  (updatedTotalByCategory1[item.category]?.summary || 0) +
-                    item.price * item.quantity,
-                  2,
-                ),
-              2,
-            ),
-            percentage:
-              state.discountedCategories[item.category]?.discount || 0,
-          };
-          if (
-            updatedTotalByCategory1[item.category].total >=
-            state.discountedCategories[item.category].minTotal
-          ) {
-            updatedTotalByCategory1[item.category].summary = toFixedNumber(
-              updatedTotalByCategory1[item.category].total -
-                updatedTotalByCategory1[item.category].total *
-                  state.discountedCategories[item.category].discount,
-              2,
-            );
-            updatedTotalByCategory1[item.category].discountAmount =
-              toFixedNumber(
-                updatedTotalByCategory1[item.category].total *
-                  state.discountedCategories[item.category].discount,
-                2,
-              );
-          }
-        } else {
-          updatedTotalByCategory1[item.category] = {
-            total: toFixedNumber(item.price * item.quantity, 2),
-            summary: toFixedNumber(item.price * item.quantity, 2),
-            discountAmount: 0,
-            percentage:
-              state.discountedCategories[item.category]?.discount || 0,
-          };
-        }
-      });
+      const {
+        updatedItems: updatedItems1,
+        updatedTotalByCategory: updatedTotalByCategory1,
+      } = getUpdatedItemsAfterCartDeleteSingleAction(state, action);
       const totalDiscount1 = Object.values(updatedTotalByCategory1).reduce(
         (acc, curr) => acc + curr.discountAmount,
         0,
@@ -238,74 +86,12 @@ export default (state = initialState, action: CartActions) => {
       const updatedTotalAmount2 =
         state.totalAmount -
         existingCartItem2.price * existingCartItem2.quantity;
-      let updatedItems2 = state.items.filter(
-        item => item.id !== action.payload.id,
-      );
 
-      const updatedTotalByCategory2: {
-        [key: string]: {
-          total: number;
-          summary: number;
-          discountAmount: number;
-          percentage: number;
-        };
-      } = {};
+      const {
+        updatedItems: updatedItems2,
+        updatedTotalByCategory: updatedTotalByCategory2,
+      } = getUpdatedItemsAfterCartDeleteAllAction(state, action);
 
-      updatedItems2.forEach(item => {
-        if (item.category in state.discountedCategories) {
-          updatedTotalByCategory2[item.category] = {
-            total: toFixedNumber(
-              (updatedTotalByCategory2[item.category]?.total || 0) +
-                item.price * item.quantity,
-              2,
-            ),
-            summary: toFixedNumber(
-              (updatedTotalByCategory2[item.category]?.summary || 0) +
-                item.price * item.quantity,
-              2,
-            ),
-            discountAmount: toFixedNumber(
-              toFixedNumber(
-                (updatedTotalByCategory2[item.category]?.total || 0) +
-                  item.price * item.quantity,
-                2,
-              ) -
-                toFixedNumber(
-                  (updatedTotalByCategory2[item.category]?.summary || 0) +
-                    item.price * item.quantity,
-                  2,
-                ),
-              2,
-            ),
-            percentage:
-              state.discountedCategories[item.category]?.discount || 0,
-          };
-          if (
-            updatedTotalByCategory2[item.category].total >=
-            state.discountedCategories[item.category].minTotal
-          ) {
-            updatedTotalByCategory2[item.category].summary =
-              updatedTotalByCategory2[item.category].total -
-              updatedTotalByCategory2[item.category].total *
-                state.discountedCategories[item.category].discount;
-
-            updatedTotalByCategory2[item.category].discountAmount =
-              toFixedNumber(
-                updatedTotalByCategory2[item.category].total *
-                  state.discountedCategories[item.category].discount,
-                2,
-              );
-          }
-        } else {
-          updatedTotalByCategory2[item.category] = {
-            total: toFixedNumber(item.price * item.quantity, 2),
-            summary: toFixedNumber(item.price * item.quantity, 2),
-            discountAmount: 0,
-            percentage:
-              state.discountedCategories[item.category]?.discount || 0,
-          };
-        }
-      });
       const totalDiscount2 = Object.values(updatedTotalByCategory2).reduce(
         (acc, curr) => acc + curr.discountAmount,
         0,
