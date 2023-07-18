@@ -47,6 +47,7 @@ export const LoginScreen = () => {
   return (
     <Container>
       <Input
+        inputMode="email"
         onChangeText={onChangeEmail}
         errorText={email.error}
         placeholder="Email"

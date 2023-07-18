@@ -3,7 +3,7 @@ import {View, StyleSheet, Text, TextInput, ViewStyle} from 'react-native';
 import {theme} from 'theme';
 import {TextInputProps} from 'react-native';
 
-interface Props {
+interface Props extends TextInputProps {
   containerStyle?: ViewStyle;
   placeholder?: string;
   disabled?: boolean;
