@@ -25,7 +25,7 @@ export const emailValidator = (email: string): string => {
   return '';
 };
 
-export const passwordValidator = (password: string) => {
+export const passwordValidator = (password: string): string => {
   if (!password || password.length <= 0) {
     return 'Password cannot be empty.';
   }
@@ -33,7 +33,11 @@ export const passwordValidator = (password: string) => {
   return '';
 };
 
-export const toFixedNumber = (num: number, digits: number, base?: number) => {
+export const toFixedNumber = (
+  num: number,
+  digits: number,
+  base?: number,
+): number => {
   const pow = Math.pow(base ?? 10, digits);
   return Math.round(num * pow) / pow;
 };
