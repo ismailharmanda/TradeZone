@@ -1,7 +1,7 @@
 import {
   PRODUCTS_ACTION_TYPES,
   SetLoadingAction,
-  ProductsSuccesAction,
+  ProductsSuccessAction,
 } from './products.action';
 import {ForkEffect, put, call, takeLatest} from 'redux-saga/effects';
 import {GenericActionCreator} from 'utils';
@@ -12,7 +12,7 @@ function* ProductsRequestSaga() {
   try {
     const productsData: AxiosResponse = yield call(getAllProducts);
     yield put(
-      GenericActionCreator<ProductsSuccesAction>({
+      GenericActionCreator<ProductsSuccessAction>({
         type: PRODUCTS_ACTION_TYPES.PRODUCTS_SUCCESS,
         payload: productsData.data,
       }),

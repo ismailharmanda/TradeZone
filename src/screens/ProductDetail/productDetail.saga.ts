@@ -1,7 +1,7 @@
 import {
   PRODUCT_DETAIL_ACTION_TYPES,
   SetLoadingAction,
-  ProductDetailSuccesAction,
+  ProductDetailSuccessAction,
   ProductDetailRequestAction,
 } from './productDetail.action';
 import {ForkEffect, put, call, takeLatest} from 'redux-saga/effects';
@@ -15,7 +15,7 @@ function* ProductDetailRequestSaga(action: ProductDetailRequestAction) {
       getSingleProduct(action.payload),
     );
     yield put(
-      GenericActionCreator<ProductDetailSuccesAction>({
+      GenericActionCreator<ProductDetailSuccessAction>({
         type: PRODUCT_DETAIL_ACTION_TYPES.PRODUCT_DETAIL_SUCCESS,
         payload: productDetailData.data,
       }),

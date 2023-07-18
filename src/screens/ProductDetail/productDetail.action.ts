@@ -17,7 +17,7 @@ export interface ProductDetailRequestAction {
   payload: number;
 }
 
-export interface ProductDetailSuccesAction {
+export interface ProductDetailSuccessAction {
   type: PRODUCT_DETAIL_ACTION_TYPES.PRODUCT_DETAIL_SUCCESS;
   payload: ProductDetail;
 }
@@ -33,6 +33,6 @@ export interface SetLoadingAction {
 
 export type ProductDetailActions =
   | ProductDetailRequestAction
-  | ProductDetailSuccesAction
+  | ProductDetailSuccessAction
   | ProductDetailFailAction
   | SetLoadingAction;

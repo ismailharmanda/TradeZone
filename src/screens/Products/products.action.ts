@@ -24,7 +24,7 @@ export interface ProductsRequestAction {
   type: PRODUCTS_ACTION_TYPES.PRODUCTS_REQUEST;
 }
 
-export interface ProductsSuccesAction {
+export interface ProductsSuccessAction {
   type: PRODUCTS_ACTION_TYPES.PRODUCTS_SUCCESS;
   payload: Product[];
 }
@@ -42,7 +42,7 @@ export interface ProductCategoriesRequestAction {
   type: PRODUCTS_ACTION_TYPES.PRODUCT_CATEGORIES_REQUEST;
 }
 
-export interface ProductCategoriesSuccesAction {
+export interface ProductCategoriesSuccessAction {
   type: PRODUCTS_ACTION_TYPES.PRODUCT_CATEGORIES_SUCCESS;
   payload: Categories;
 }
@@ -56,7 +56,7 @@ export interface ProductsByCategoryRequestAction {
   payload: string;
 }
 
-export interface ProductsByCategorySuccesAction {
+export interface ProductsByCategorySuccessAction {
   type: PRODUCTS_ACTION_TYPES.PRODUCTS_BY_CATEGORY_SUCCESS;
   payload: {category: string; products: Product[]};
 }
@@ -67,12 +67,12 @@ export interface ProductsByCategoryFailAction {
 
 export type ProductsActions =
   | ProductsRequestAction
-  | ProductsSuccesAction
+  | ProductsSuccessAction
   | ProductsFailAction
   | SetLoadingAction
   | ProductCategoriesRequestAction
-  | ProductCategoriesSuccesAction
+  | ProductCategoriesSuccessAction
   | ProductCategoriesFailAction
   | ProductsByCategoryRequestAction
-  | ProductsByCategorySuccesAction
+  | ProductsByCategorySuccessAction
   | ProductsByCategoryFailAction;

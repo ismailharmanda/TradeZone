@@ -1,7 +1,7 @@
 import {
   PRODUCTS_ACTION_TYPES,
   SetLoadingAction,
-  ProductsByCategorySuccesAction,
+  ProductsByCategorySuccessAction,
   ProductsByCategoryRequestAction,
 } from './products.action';
 import {ForkEffect, put, call, takeEvery} from 'redux-saga/effects';
@@ -17,7 +17,7 @@ function* ProductsByCategoryRequestSaga(
       getProductsByCategory(action.payload),
     );
     yield put(
-      GenericActionCreator<ProductsByCategorySuccesAction>({
+      GenericActionCreator<ProductsByCategorySuccessAction>({
         type: PRODUCTS_ACTION_TYPES.PRODUCTS_BY_CATEGORY_SUCCESS,
         payload: {
           category: action.payload,
